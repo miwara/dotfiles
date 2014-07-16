@@ -6,6 +6,8 @@ Caskファイルも管理する
 
 使い方
 -------
+.emacs.dでこのリポジトリを`git clone`する
+
 .emacs.d以下にinit.el，Caskファイルのリンクを作成する
 
     ln -s inits/init.el ~/.emacs.d/init.el
