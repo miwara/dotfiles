@@ -8,7 +8,7 @@ Caskファイルも管理する
 -------
 .emacs.d以下にinit.el，Caskファイルのリンクを作成する
 
-    ln -s inits/init.el .emacs.d/init.el
-    ln -s inits/Cask .emacs.d/Cask
+    ln -s inits/init.el ~/.emacs.d/init.el
+    ln -s inits/Cask ~/.emacs.d/Cask
 
 あとは，.emacs.dで`cask`を実行してパッケージをインストールする
