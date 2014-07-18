@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2014/07/07
+# last update : 2014/07/19
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -64,6 +64,10 @@ precmd () {
 # esac
 
 # alias
+# 設定ファイルの編集
+alias m="emacs ~/.zshrc"
+alias x="source ~/.zshrc"
+
 # emacs関連
 alias em="emacs"
 alias e="emacs"
@@ -113,3 +117,23 @@ bindkey "^S" history-incremental-pattern-search-forward
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# Enterで ls と git status
+function do_enter() {
+    if [  -n "$BUFFER" ]; then
+        zle accept-line
+        return 0
+    fi
+    echo
+    ls
+   # ls_abbrev
+   if [  "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+       echo
+       echo -e "\e[ 0;33m--- git status ---\e[ 0m"
+       git status -sb
+   fi
+   zle reset-prompt
+   return 0
+}
+zle -N do_enter
+bindkey '^m' do_enter
