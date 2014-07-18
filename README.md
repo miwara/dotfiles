@@ -1,15 +1,14 @@
-Emacs inits
+dotfiles
 =====================
+各種ツールの設定ファイルを管理する  
 Emacsの設定ファイル郡  
-Caskファイルも管理する
-
+Cask，.zshrc，.tmux.confも管理する  
+その他のdotfileも追加する
 
 使い方
 -------
-.emacs.dでこのリポジトリを`git clone`する  
-.emacs.d以下にinit.el，Caskファイルのリンクを作成する
+    cd ~
+    git clone git@github.com:/miwara/dotfiles.git
+    ./placefiles.sh
 
-    ln -s inits/init.el ~/.emacs.d/init.el
-    ln -s inits/Cask ~/.emacs.d/Cask
-
-あとは，.emacs.dで`cask`を実行してパッケージをインストールする
+後はEmacsのパッケージをCaskでインストールする
