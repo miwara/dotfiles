@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2014/07/19
+# last update : 2014/07/20
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
