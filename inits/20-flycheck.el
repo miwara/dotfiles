@@ -1,4 +1,4 @@
 ;; flycheck
-;; last update : 2014/07/06
+;; last update : 2014/07/20
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
