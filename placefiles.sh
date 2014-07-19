@@ -2,7 +2,9 @@
 
 currentdir=~/dotfiles
 
-mkdir ./tmp
+if [ ! -e ./tmp ]; then
+    mkdir ./tmp
+fi
 cd ./tmp
 
 ln -s $currentdir/init.el init.el
