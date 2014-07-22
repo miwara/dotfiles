@@ -1,14 +1,11 @@
 # Created by newuser for 5.0.2
-# last update : 2014/07/20
+# last update : 2014/07/22
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
-# path 追加
-export PATH=/cygdrive/c/Users/miura/.cask/bin:$PATH
-
 autoload -Uz compinit
-compinit
+compinit -u
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -89,7 +86,7 @@ alias la="ls -al --color"
 alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
 
 # /tmp以下を全削除してから終了
-alias exit="rm -rf /tmp/* && exit"
+alias exit="rm -rf /tmp/tmux-1000/* && exit"
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
