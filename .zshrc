@@ -86,7 +86,7 @@ alias la="ls -al --color"
 alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
 
 # /tmp以下を全削除してから終了
-alias exit="rm -rf /tmp/* && exit"
+alias exit="rm -rf /tmp/tmux-1000/* && exit"
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
