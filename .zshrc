@@ -1,13 +1,10 @@
 # Created by newuser for 5.0.2
-# last update : 2014/07/20
+# last update : 2014/07/22
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
-# path 追加
-export PATH=/cygdrive/c/Users/miura/.cask/bin:$PATH
-
-autoload -Uz compinit
+autoload -Uz compinit -u
 compinit
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:default' menu select=1
