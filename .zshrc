@@ -4,8 +4,8 @@
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
-autoload -Uz compinit -u
-compinit
+autoload -Uz compinit
+compinit -u
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
