@@ -1,8 +1,15 @@
 # Created by newuser for 5.0.2
-# last update : 2014/07/22
+# last update : 2014/07/28
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# cask
+export PATH="$HOME/.cask/bin:$PATH"
 
 autoload -Uz compinit
 compinit -u
@@ -111,9 +118,6 @@ bindkey "^N" history-beginning-search-forward-end
 # 履歴のインクリメントサーチでワイルドカード利用可能
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
-
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 # Enterで ls と git status
 function do_enter() {
