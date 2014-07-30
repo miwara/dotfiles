@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2014/07/28
+# last update : 2014/07/30
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -73,7 +73,6 @@ alias m="emacs ~/.zshrc"
 alias x="source ~/.zshrc"
 
 # emacs関連
-alias em="emacs"
 alias e="emacs"
 
 # git関連
