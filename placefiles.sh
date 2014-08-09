@@ -7,6 +7,10 @@ if [ ! -e ./tmp ]; then
 fi
 cd ./tmp
 
+if [ ! -e $HOME/.emacs.d/ ]; then
+    mkdir $HOME/.emacs.d/
+fi
+
 ln -s $currentdir/init.el init.el
 mv init.el $HOME/.emacs.d/
 
