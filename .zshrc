@@ -102,7 +102,7 @@ alias la="ls -al --color"
 alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
 
 # tmux関連 /tmp以下の関連ファイルを削除しないと起動できないので
-alias tmux='rm -r /tmp/tmux* && tmux'
+alias tmux="rm -r /tmp/tmux* && tmux"
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
