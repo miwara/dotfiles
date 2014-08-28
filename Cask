@@ -5,6 +5,8 @@
 (depends-on "auto-complete")
 (depends-on "cask")
 (depends-on "dash")
+(depends-on "el-spec")
+(depends-on "el-spy")
 (depends-on "epl")
 (depends-on "f")
 (depends-on "flycheck")
