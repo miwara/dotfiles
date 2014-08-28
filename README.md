@@ -7,8 +7,8 @@ Cask，.zshrc，.tmux.confも管理する
 
 使い方
 -------
-    cd ~
-    git clone git@github.com:/miwara/dotfiles.git
+    git clone git@github.com:/miwara/dotfiles.git ~/dotfiles
+    cd ~/dotfiles
     ./placefiles.sh
 
 後はEmacsのパッケージをCaskでインストールする

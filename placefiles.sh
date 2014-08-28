@@ -1,20 +1,62 @@
 #!/bin/bash
 
-currentdir=~/dotfiles
+currentdir=$HOME/dotfiles
 
 if [ ! -e ./tmp ]; then
     mkdir ./tmp
 fi
 cd ./tmp
 
-ln -s $currentdir/init.el init.el
-mv init.el ~/.emacs.d/
+if [ ! -e $HOME/.emacs.d/ ]; then
+    mkdir $HOME/.emacs.d/
+fi
 
-ln -s $currentdir/Cask Cask
-mv Cask ~/.emacs.d/Cask
+echo "--- make init.el link ---"
+if [ ! -e $HOME/.emacs.d/init.el ]; then
+    ln -s $currentdir/init.el init.el
+    mv init.el $HOME/.emacs.d/
+    echo "OK."
+else
+    echo "File already exists."
+    echo "...skip"
+fi
+echo "-----------------------"
+echo ""
 
-ln -s $currentdir/.zshrc .zshrc
-mv .zshrc ~/
+echo "--- make Cask link ---"
+if [ ! -e $HOME/.emacs.d/Cask ]; then
+    ln -s $currentdir/Cask Cask
+    mv Cask $HOME/.emacs.d/Cask
+    echo "OK."
+else
+    echo "File already exists."
+    echo "...skip"
+fi
+echo "-----------------------"
+echo ""
 
-ln -s $currentdir/.tmux.conf .tmux.conf
-mv .tmux.conf ~/
+echo "--- make .zshrc ---"
+if [ ! -e $HOME/.zshrc ]; then
+    ln -s $currentdir/.zshrc .zshrc
+    mv .zshrc $HOME/
+    echo "OK."
+else
+    echo "File already exists."
+    echo "...skip"
+fi
+echo "-----------------------"
+echo ""
+
+echo "--- make .tmux.conf link ---"
+if [ ! -e $HOME/.tmux.conf ]; then
+    ln -s $currentdir/.tmux.conf .tmux.conf
+    mv .tmux.conf $HOME/
+    echo "OK."
+else
+    echo "File already exists."
+    echo "...skip"
+fi
+echo "-----------------------"
+echo ""
+
+echo "\complete!/"

@@ -1,5 +1,5 @@
-;; Emacs style
-;; last update : 2014/06/15
+;; Emacs common style
+;; last update : 2014/08/28
 
 ;; 初期フレームの設定
 (setq default-frame-alist
@@ -18,28 +18,6 @@
 ;; フレームの透明度
 (set-frame-parameter (selected-frame) 'alpha '(0.75))
 
-;; font
-;(add-to-list 'default-frame-alist '(font . "ricty-13.5"))
-(set-face-attribute 'default nil
-		    :family "Ricty Discord"
-		    :height 135)
-(set-fontset-font (frame-parameter nil 'font)
-		  'japanese-jisx0208
-		  (cons "Ricty Discord" "iso10646-1"))
-(set-fontset-font (frame-parameter nil 'font)
-		  'japanese-jisx0212
-		  (cons "Ricty Discord" "iso10646-1"))
-(set-fontset-font (frame-parameter nil 'font)
-		  'katakana-jisx0201
-		  (cons "Ricty Discord" "iso10646-1"))
-
-; THE QUICK BROWN FOX JUMPS OVER LAZY DOG.
-; the quick brown fox jumps over lazy dog. 0123456789
-
-;; モードラインの背景，文字の色設定
-(set-face-background 'modeline "OrangeRed3")
-(set-face-foreground 'modeline "SeaGreen3")
-
 ;; モードラインに時刻を表示
 (display-time)
 
@@ -48,8 +26,10 @@
 (column-number-mode 1)
 
 ;; ツールバー，スクロールバーの非表示
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+(when window-system
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0)
+)
 
 ;; 対応する括弧を強調表示
 (show-paren-mode t)
@@ -86,3 +66,9 @@
 
 ;; 指定行へ移動
 (global-set-key (kbd "C-c l") 'goto-line)
+
+;; 環境によって設定を切り替え
+(if (eq system-type 'cygwin)
+    (load "~/dotfiles/inits/windowsstyle.el")
+  (load "~/dotfiles/inits/linuxstyle.el")
+  )
