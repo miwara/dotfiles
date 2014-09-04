@@ -1,5 +1,5 @@
 ;; Emacs common style
-;; last update : 2014/08/28
+;; last update : 2014/09/03
 
 ;; 初期フレームの設定
 (setq default-frame-alist
@@ -20,6 +20,10 @@
 
 ;; モードラインに時刻を表示
 (display-time)
+
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "deep sky blue")
+(set-face-foreground 'highlight "wheat")
 
 ;; 行番号・桁番号の表示
 (line-number-mode 1)
