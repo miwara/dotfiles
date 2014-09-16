@@ -11,6 +11,7 @@
 (depends-on "flycheck")
 (depends-on "git-commit-mode")
 (depends-on "git-rebase-mode")
+(depends-on "helm")
 (depends-on "init-loader")
 (depends-on "key-combo")
 (depends-on "magit")
