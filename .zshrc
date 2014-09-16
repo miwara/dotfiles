@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2014/08/04
+# last update : 2014/09/04
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -94,6 +94,9 @@ alias gap="git add -p"
 alias grs="git reset --soft"
 alias gth="git reset --hard"
 
+alias gss="git stash save"
+alias gsp="git stash pop"
+
 # ls関連
 alias ls="ls --color"
 alias la="ls -al --color"
@@ -103,6 +106,10 @@ alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
 
 # tmux関連 /tmp以下の関連ファイルを削除しないと起動できないので
 alias tmux="rm -r /tmp/tmux* && tmux"
+
+# chefDK関連
+alias knife="C:/opscode/chefdk/bin/knife"
+alias berks="C:/opscode/chefdk/bin/berks"
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
