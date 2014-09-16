@@ -1,5 +1,5 @@
 ;; Emacs system
-;; last update : 2014/06/15
+;; last update : 2014/09/16
 
 ;; 簡略化
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -35,3 +35,6 @@
 ;; ファイル内カーソル位置を記憶
 (setq-default save-place t)
 (require 'saveplace)
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
