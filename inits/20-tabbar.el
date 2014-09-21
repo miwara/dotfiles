@@ -1,5 +1,5 @@
 ;; tabbar
-;; last update : 2014/07/20
+;; last update : 2014/09/21
 ;; http://www.emacswiki.org/emacs/download/tabbar.el
 
 (require 'tabbar)
@@ -7,8 +7,8 @@
 (global-set-key [f4] 'tabbar-mode)
 
 ;; Google chrome のようなバインド
-(global-set-key [(control tab)] 'tabbar-forward)
-(global-set-key [(control shift tab)] 'tabbar-backward)
+(global-set-key (kbd "M-]") 'tabbar-forward)
+(global-set-key (kbd "M-[") 'tabbar-backward)
 
 ;; グループ化を使わない
 (setq tabbar-buffer-groups-function nil)
