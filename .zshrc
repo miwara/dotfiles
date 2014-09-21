@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2014/09/04
+# last update : 2014/09/21
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -83,7 +83,7 @@ alias gl="git log --oneline --graph --color"
 alias gls="git log --graph --color"
 alias gck="git checkout"
 alias gckb="git checkout -b"
-alias gb="git branch"
+alias gb="git branch -v"
 alias gbd="git branch -D"
 alias gd="git diff --color"
 alias gdc="git diff --color --cached"
