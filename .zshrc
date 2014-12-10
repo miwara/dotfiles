@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2014/09/21
+# last update : 2014/12/11
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -63,7 +63,6 @@ precmd () {
 	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
 	SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:% {${reset_color}%} "
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-	PROMPT="%{${fg[white]%}${HOST%%.*} ${PROMPT}"
 # 	;;
 # esac
 
@@ -106,10 +105,6 @@ alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
 
 # tmux関連 /tmp以下の関連ファイルを削除しないと起動できないので
 alias tmux="rm -r /tmp/tmux* && tmux"
-
-# chefDK関連
-alias knife="C:/opscode/chefdk/bin/knife"
-alias berks="C:/opscode/chefdk/bin/berks"
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
