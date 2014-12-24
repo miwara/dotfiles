@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2014/09/04
+# last update : 2014/12/24
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -79,7 +79,8 @@ alias e="emacs"
 alias push="git push"
 alias pull="git pull"
 alias gst="git status"
-alias gl="git log --oneline --graph --color"
+alias gl="git log --graph --color --pretty=format:\"%C(cyan)[ %ad]%Creset %C(green)%h%Creset %C(white reverse)%an%Creset : %C(white bold)%w(80)%s%Creset\""
+#alias gl="git log --oneline --graph --color"
 alias gls="git log --graph --color"
 alias gck="git checkout"
 alias gckb="git checkout -b"
