@@ -106,6 +106,9 @@ alias gsp="git stash pop"
 alias ls="ls --color"
 alias la="ls -al --color"
 
+# grep関連
+alias grep="grep -n --color=auto "
+
 # java関連
 alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
 
