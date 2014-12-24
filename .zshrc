@@ -102,6 +102,8 @@ alias gth="git reset --hard"
 alias gss="git stash save"
 alias gsp="git stash pop"
 
+alias gclf="git clean -f"
+
 # ls関連
 alias ls="ls --color"
 alias la="ls -al --color"
