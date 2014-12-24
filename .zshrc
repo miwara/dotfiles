@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2014/12/11
+# last update : 2014/12/24
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -47,24 +47,30 @@ precmd () {
 }
 
 # プロンプト設定
-# cygwinはrootがないためUIDでプロンプト変更は削除
-# case $(UID) in
-# 0)
-# 	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
-# 	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
-# 	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
-# 	SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:% {${reset_color}%} "
-# 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-# 	PROMPT="%{${fg[white]%}${HOST%%.*} ${PROMPT}"
-# 	;;
-# *)
+# ユーザ毎に使い分け
+case ${USERNAME} in
+    'root')
+ 	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
+ 	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
+ 	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
+ 	SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:% {${reset_color}%} "
+ 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+ 	;;
+    'vagrant')
+	PROMPT="%U%F{white}%K{green}%B%m:%n%#%b%k%f%u "
+ 	PROMPT2="%F{white}%K{green}%B%m:%n%#%b%k%f "
+	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
+	SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:% {${reset_color}%} "
+	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+	;;
+    *)
 	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
 	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
 	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
 	SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:% {${reset_color}%} "
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-# 	;;
-# esac
+ 	;;
+esac
 
 # alias
 # 設定ファイルの編集
