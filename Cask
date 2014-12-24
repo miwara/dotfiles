@@ -30,4 +30,5 @@
 (depends-on "tabbar")
 (depends-on "undo-tree")
 (depends-on "undohist")
+(depends-on "visual-regexp")
 (depends-on "yasnippet")
