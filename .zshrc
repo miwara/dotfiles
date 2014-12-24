@@ -5,8 +5,8 @@
 export LANG=ja_JP.UTF-8
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 # cask
 export PATH="$HOME/.cask/bin:$PATH"
