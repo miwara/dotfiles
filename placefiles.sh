@@ -59,4 +59,17 @@ fi
 echo "-----------------------"
 echo ""
 
+echo "--- make .gitignore link ---"
+if [ ! -e $HOME/.gitignore ]; then
+    ln -s $currentdir/.gitignore .gitignore
+    mv .gitignore $HOME/
+    git config --global core.exculdesfile $HOME/.gitignore
+    echo "OK."
+else
+    echo "File already exists."
+    echo "...skip"
+fi
+echo "-----------------------"
+echo ""
+
 echo "\complete!/"
