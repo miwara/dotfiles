@@ -5,6 +5,7 @@
 export LANG=ja_JP.UTF-8
 
 # rbenv
+# cygwinでchefを使うときに必要
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
