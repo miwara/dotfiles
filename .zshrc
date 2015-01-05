@@ -1,12 +1,12 @@
 # Created by newuser for 5.0.2
-# last update : 2014/12/24
+# last update : 2015/01/05
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
 # rbenv
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # cask
 export PATH="$HOME/.cask/bin:$PATH"
