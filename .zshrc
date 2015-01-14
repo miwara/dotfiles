@@ -1,13 +1,16 @@
 # Created by newuser for 5.0.2
-# last update : 2015/01/05
+# last update : 2015/01/14
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
 # rbenv
 # cygwinでchefを使うときに必要
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+rbenvpath=$HOME/.rbenv/bin
+if [[ -e $rbenvpath ]]; then
+    export PATH="$rbenvpath:$PATH"
+    eval "$(rbenv init -)"
+fi
 
 # cask
 export PATH="$HOME/.cask/bin:$PATH"
