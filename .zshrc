@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2015/01/14
+# last update : 2015/02/28
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -24,6 +24,9 @@ autoload colors
 colors
 #autoload predict-on
 #predict-on
+
+# 必要のない機能
+diable r
 
 setopt auto_cd			# cd の省略
 setopt auto_pushd		# 移動したディレクトリを記録
