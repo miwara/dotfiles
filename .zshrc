@@ -26,7 +26,7 @@ colors
 #predict-on
 
 # 必要のない機能
-diable r
+disable r
 
 setopt auto_cd			# cd の省略
 setopt auto_pushd		# 移動したディレクトリを記録
