@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 currentdir=$(cd $(dirname $0); pwd)
 
 if [ ! -e ./tmp ]; then
