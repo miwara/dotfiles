@@ -1,6 +1,6 @@
 #!/bin/bash
 
-currentdir=$HOME/dotfiles
+currentdir=$(cd $(dirname $0); pwd)
 
 if [ ! -e ./tmp ]; then
     mkdir ./tmp
