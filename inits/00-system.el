@@ -1,5 +1,5 @@
 ;; Emacs system
-;; last update : 2014/09/16
+;; last update : 2015/03/24
 
 ;; 簡略化
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -38,3 +38,6 @@
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+;; C-h をBackspaceにする
+(global-set-key "\C-h" 'delete-backward-char)
