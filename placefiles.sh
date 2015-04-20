@@ -74,4 +74,16 @@ fi
 echo "-----------------------"
 echo ""
 
+echo "--- make .vimrc link ---"
+if [ ! -e $HOME/.vimrc ]; then
+    ln -s $currentdir/.vimrc .vimrc
+    mv .vimrc $HOME/
+    echo "OK."
+else
+    echo "File already exists."
+    echo "...skip"
+fi
+echo "-----------------------"
+echo ""
+
 echo "\complete!/"
