@@ -13,7 +13,6 @@
 (depends-on "git-rebase-mode")
 (depends-on "helm")
 (depends-on "init-loader")
-(depends-on "key-combo")
 (depends-on "magit")
 (depends-on "multiple-cursors")
 (depends-on "open-junk-file")
