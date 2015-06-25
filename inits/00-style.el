@@ -22,8 +22,8 @@
 (display-time)
 
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "brightyellow")
-(set-face-foreground 'highlight "brightblack")
+(set-face-background 'hl-line "yellow")
+(set-face-foreground 'highlight "black")
 
 ;; 行番号・桁番号の表示
 (line-number-mode 1)
