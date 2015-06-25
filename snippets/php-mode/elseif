@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: elseif
+# key: elseif
+# binding: direct-keybinding
+# --
+elseif (${1:condition}) {
+       $0
+}
