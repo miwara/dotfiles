@@ -25,6 +25,18 @@ fi
 echo "-----------------------"
 echo ""
 
+echo "--- make snippets link ---"
+if [ ! -e $HOME/.emacs.d/snippets ]; then
+    ln -s $currentdir/snippets snippets
+    mv snippets $HOME/.emacs.d/
+    echo "OK."
+else
+    echo "File already exists."
+    echo "...skip"
+fi
+echo "-----------------------"
+echo ""
+
 echo "--- make Cask link ---"
 if [ ! -e $HOME/.emacs.d/Cask ]; then
     ln -s $currentdir/Cask Cask
