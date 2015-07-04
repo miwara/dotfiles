@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: thisdir
+# key: thisdir
+# binding: direct-keybinding
+# --
+THIS_DIR=$(cd $(dirname $0); pwd)

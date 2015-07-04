@@ -1,0 +1,5 @@
+# name: fprintf (stderr, "...");
+# key: stderr
+# --
+fprintf(stderr, $0);
+$1
