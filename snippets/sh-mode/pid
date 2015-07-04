@@ -1,0 +1,5 @@
+# name: pid
+# key: pid
+# --
+echo $$
+$0
