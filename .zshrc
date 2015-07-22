@@ -1,5 +1,5 @@
 # Created by newuser for 5.0.2
-# last update : 2015/02/28
+# last update : 2015/07/22
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -123,7 +123,7 @@ alias grep="grep -n --color=auto "
 alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
 
 # tmux関連 /tmp以下の関連ファイルを削除しないと起動できないので
-alias tmux="rm -r /tmp/tmux* && tmux"
+alias tmux="rm -r /tmp/tmux* && tmux -2"
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
