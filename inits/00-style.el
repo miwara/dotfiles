@@ -1,5 +1,5 @@
 ;; Emacs common style
-;; last update : 2015/06/25
+;; last update : 2015/09/01
 
 ;; 初期フレームの設定
 (setq default-frame-alist
@@ -14,6 +14,11 @@
 		    '(left . 650)
 		    )
 	      default-frame-alist))
+
+;; region の色設定
+(setq transient-mark-mode t)
+(set-face-foreground 'region' "brightblack")
+(set-face-background 'region' "color-84")
 
 ;; フレームの透明度
 (set-frame-parameter (selected-frame) 'alpha '(0.75))
