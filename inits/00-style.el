@@ -1,5 +1,5 @@
 ;; Emacs common style
-;; last update : 2015/06/25
+;; last update : 2015/12/10
 
 ;; 初期フレームの設定
 (setq default-frame-alist
@@ -47,8 +47,32 @@
 (set-face-background 'show-paren-mismatch-face "light coral")
 
 ;; 行末の空白を強調表示
-(setq-default show-trailing-whitespace t)
-(set-face-background 'trailing-whitespace "peach puff")
+(require 'whitespace)
+(setq whitespace-style '(face
+                         trailing
+                         tabs
+                         spaces
+                         empty
+                         space-mark
+                         ))
+; 全角スペースは□ (U+25A1)をで表示する
+; タブのシンボルは設定しない（コピペが面倒になる）
+(setq whitespace-display-mappings
+      '((space-mark ?\u3000 [?\u25a1])))
+; 可視化は全角スペースのみ
+(setq whitespace-space-regexp "\\(\u3000+\\)")
+
+(global-whitespace-mode 1)
+; スペースの色設定
+(set-face-attribute 'whitespace-trailing nil
+                    :background "brightmagenta")
+(set-face-attribute 'whitespace-tab nil
+                    :background "brightblue")
+(set-face-attribute 'whitespace-space nil
+                    :foreground "brightgreen"
+                    :weight 'bold)
+(set-face-attribute 'whitespace-empty nil
+                    :background "brightcyan")
 
 ;; タイトルバーにファイルのフルパス表示
 (setq frame-title-format
