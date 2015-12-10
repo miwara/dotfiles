@@ -1,5 +1,4 @@
 ;; emmet mode
-;; last update : 2014/06/15
 
 (require 'emmet-mode)
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; マークアップ言語全部で使う

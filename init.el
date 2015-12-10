@@ -1,5 +1,4 @@
 ;; init.el
-;; last update : 2014/07/16
 
 ;; •¶šƒR[ƒh
 (setq default-buffer-file-coding-system 'utf-8)

@@ -1,5 +1,4 @@
 ;; yasnippet
-;; last update : 2014/06/15
 ;; https://github.com/capitaomorte/yasnippet
 
 (require 'yasnippet)

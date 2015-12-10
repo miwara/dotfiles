@@ -1,5 +1,4 @@
 ;; yatex mode
-;; last update : 2013/12/18
 
 (setq auto-mode-alist
       (append '(("\\.tex$" . yatex-mode)

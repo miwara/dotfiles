@@ -1,5 +1,4 @@
 ;; tabbar
-;; last update : 2014/09/21
 ;; http://www.emacswiki.org/emacs/download/tabbar.el
 
 (require 'tabbar)

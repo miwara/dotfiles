@@ -1,5 +1,4 @@
 ;; auto-complete
-;; last update : 2014/07/13
 ;; https://github.com/auto-complete/auto-complete
 
 

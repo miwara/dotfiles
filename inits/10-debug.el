@@ -1,5 +1,4 @@
 ;; debug
-;; last update : 2013/06/26
 
 ;; 有用なバッファを開くモード
 (setq gdb-many-windows t)
