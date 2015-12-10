@@ -1,5 +1,4 @@
 ;; smartrep
-;; last update : 2013/06/26
 
 (require 'smartrep)
 

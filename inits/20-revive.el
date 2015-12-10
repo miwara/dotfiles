@@ -1,5 +1,4 @@
 ;; revive
-;; last update : 2014/06/15
 ;; http://www.gentei.org/~yuuji/software/revive.el
 
 (autoload 'save-current-configuration "revive" "Save status" t)

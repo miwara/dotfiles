@@ -1,5 +1,4 @@
 ;; window(cygwin) style
-;; last update : 2014/08/28
 
 ;; font
 ;(add-to-list 'default-frame-alist '(font . "ricty-13.5"))

@@ -1,5 +1,4 @@
 ;; org-mode
-;; last update : 2014/06/15
 
 (setq org-startup-truncated nil)
 ;; (defun change-truncation ()

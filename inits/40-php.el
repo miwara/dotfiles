@@ -1,5 +1,4 @@
 ;; php mode
-;; last update : 2013/12/15
 
 (require 'php-mode)
 

@@ -1,5 +1,4 @@
 ;; multiple-cursors
-;; last update : 2014/06/22
 ;; https://github.com/emacsmirror/multiple-cursors
 
 (require 'multiple-cursors)

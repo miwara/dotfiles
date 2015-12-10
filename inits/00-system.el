@@ -1,16 +1,7 @@
 ;; Emacs system
-;; last update : 2015/03/24
 
 ;; 簡略化
 (defalias 'yes-or-no-p 'y-or-n-p)
-
-;; タイムスタンプを記入する
-(require 'time-stamp)
-(add-hook 'before-save-hook 'time-stamp)
-(setq time-stamp-active t)
-(setq time-stamp-start "last update : ")
-(setq time-stamp-format "%04y/%02m/%02d")
-(setq time-stamp-end " \\|$")
 
 ;; 分割windwにしたときのカーソル移動設定(Ctrl-Shift-←，↓，↑，→)
 (global-set-key (kbd "C-S-<left>") 'windmove-left)
