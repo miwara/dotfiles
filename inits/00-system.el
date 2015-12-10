@@ -32,3 +32,6 @@
 
 ;; C-h をBackspaceにする
 (global-set-key "\C-h" 'delete-backward-char)
+
+;; ファイル末尾に改行を加える
+(setq require-final-newline t)
