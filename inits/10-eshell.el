@@ -1,5 +1,4 @@
 ;; Eshell
-;; last update : 2014/06/15
 
 (add-hook 'eshell-mode-hook (lambda ()
 			      (define-key eshell-mode-map "\C-a" 'eshell-bol)

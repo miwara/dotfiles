@@ -1,5 +1,4 @@
 ;; GNU global
-;; last update : 2013/07/01
 
 (when (locate-library "gtags") (require 'gtags))
 (global-set-key "\M-t" 'gtags-find-tag)	;関数の定義元へ

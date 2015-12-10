@@ -1,5 +1,4 @@
 ;; Emacs common style
-;; last update : 2015/12/10
 
 ;; 初期フレームの設定
 (setq default-frame-alist

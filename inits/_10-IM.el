@@ -1,5 +1,4 @@
 ;; Input Method
-;; last update : 2014/06/15
 ;; http://openlab.ring.gr.jp/skk/ddskk-ja.html
 
 ;; ddskk
