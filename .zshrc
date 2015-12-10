@@ -1,6 +1,7 @@
 # Created by newuser for 5.0.2
 
 export PATH="$HOME/.composer/vendor/bin:$PATH"
+export PATH="/usr/local/bin/:$PATH"
 
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
@@ -13,8 +14,26 @@ if [[ -e $rbenvpath ]]; then
     eval "$(rbenv init -)"
 fi
 
+# pyenv
+pyenvpath=$HOME/.pyenv
+if [[ -e $pyenvpath ]]; then
+    export PYENV_ROOT="$pyenvpath"
+    export PATH="$pyenvpath/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
+
 # cask
 export PATH="$HOME/.cask/bin:$PATH"
+
+# coreutils
+case ${OSTYPE} in
+    darwin*)
+	export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+	# findutiles
+	alias find=gfind
+	alias xargs=gxargs
+	;;
+esac
 
 autoload -Uz compinit
 compinit -u
@@ -120,11 +139,25 @@ alias la="ls -al --color"
 # grep関連
 alias grep="grep -n --color=auto "
 
+# diff関連
+if [[ -x $(which colordiff) ]]; then
+    alias diff="colordiff -u"
+else
+    alias diff="diff -u"
+fi
+
 # java関連
 alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
 
 # tmux関連 /tmp以下の関連ファイルを削除しないと起動できないので
-alias tmux="rm -r /tmp/tmux* && tmux -2"
+case ${OSTYPE} in
+    darwin*)
+        alias tmux="tmux -2"
+        ;;
+    *)
+        alias tmux="rm -r /tmp/tmux* && tmux -2"
+        ;;
+esac
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
