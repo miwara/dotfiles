@@ -1,5 +1,7 @@
 # Created by newuser for 5.0.2
 
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
