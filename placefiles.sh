@@ -3,99 +3,47 @@
 set -eu
 
 currentdir=$(cd $(dirname $0); pwd)
+dotemacsdir="$HOME/.emacs.d"
 
+dotemacsfiles="init.el Cask snippets"
+dotfiles=".zshrc .tmux.conf .gitignore .vimrc"
+
+if [ ! -e $dotemacsdir ]; then
+    mkdir $dotemacsdir
+fi
+
+# 同名ファイルは2つ作れないので
+# ディレクトリを作ってその中で作業する
+# （いらないかも）
 if [ ! -e ./tmp ]; then
     mkdir ./tmp
 fi
 cd ./tmp
 
-if [ ! -e $HOME/.emacs.d/ ]; then
-    mkdir $HOME/.emacs.d/
-fi
+for file in $dotemacsfiles
+do
+    if [ ! -e $dotemacsdir/$file ]; then
+        echo "--- make $file link ---"
+        ln -s $currentdir/$file $file
+        mv $file $dotemacsdir/$file
+        echo "OK."
+        echo "-----------------------"
+        echo ""
+    fi
+done
 
-echo "--- make init.el link ---"
-if [ ! -e $HOME/.emacs.d/init.el ]; then
-    ln -s $currentdir/init.el init.el
-    mv init.el $HOME/.emacs.d/
-    echo "OK."
-else
-    echo "File already exists."
-    echo "...skip"
-fi
-echo "-----------------------"
-echo ""
+for file in $dotfiles
+do
+    if [ ! -e $HOME/$file ]; then
+        echo "--- make $file ---"
+        ln -s $currentdir/$file $file
+        mv $file $HOME/$file
+        echo "OK."
+        echo "-----------------------"
+        echo ""
+    fi
+done
 
-echo "--- make snippets link ---"
-if [ ! -e $HOME/.emacs.d/snippets ]; then
-    ln -s $currentdir/snippets snippets
-    mv snippets $HOME/.emacs.d/
-    echo "OK."
-else
-    echo "File already exists."
-    echo "...skip"
-fi
-echo "-----------------------"
-echo ""
+git config --global core.exculdesfile $HOME/.gitignore
 
-echo "--- make Cask link ---"
-if [ ! -e $HOME/.emacs.d/Cask ]; then
-    ln -s $currentdir/Cask Cask
-    mv Cask $HOME/.emacs.d/Cask
-    echo "OK."
-else
-    echo "File already exists."
-    echo "...skip"
-fi
-echo "-----------------------"
-echo ""
-
-echo "--- make .zshrc ---"
-if [ ! -e $HOME/.zshrc ]; then
-    ln -s $currentdir/.zshrc .zshrc
-    mv .zshrc $HOME/
-    echo "OK."
-else
-    echo "File already exists."
-    echo "...skip"
-fi
-echo "-----------------------"
-echo ""
-
-echo "--- make .tmux.conf link ---"
-if [ ! -e $HOME/.tmux.conf ]; then
-    ln -s $currentdir/.tmux.conf .tmux.conf
-    mv .tmux.conf $HOME/
-    echo "OK."
-else
-    echo "File already exists."
-    echo "...skip"
-fi
-echo "-----------------------"
-echo ""
-
-echo "--- make .gitignore link ---"
-if [ ! -e $HOME/.gitignore ]; then
-    ln -s $currentdir/.gitignore .gitignore
-    mv .gitignore $HOME/
-    git config --global core.exculdesfile $HOME/.gitignore
-    echo "OK."
-else
-    echo "File already exists."
-    echo "...skip"
-fi
-echo "-----------------------"
-echo ""
-
-echo "--- make .vimrc link ---"
-if [ ! -e $HOME/.vimrc ]; then
-    ln -s $currentdir/.vimrc .vimrc
-    mv .vimrc $HOME/
-    echo "OK."
-else
-    echo "File already exists."
-    echo "...skip"
-fi
-echo "-----------------------"
-echo ""
-
-echo "\complete!/"
+echo "\done!/"
