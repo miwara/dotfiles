@@ -20,12 +20,12 @@ for file in $dotemacsfiles
 do
     echo "--- make $file link ---"
     if [ ! -e $HOME/.emacs.d/$file ]; then
-	ln -s $currentdir/$file $file
-	mv $file $HOME/.emacs.d/$file
-	echo "OK."
+        ln -s $currentdir/$file $file
+        mv $file $HOME/.emacs.d/$file
+        echo "OK."
     else
-	echo "File already exists."
-	echo "...skip"
+        echo "File already exists."
+        echo "...skip"
     fi
     echo "-----------------------"
     echo ""
@@ -35,12 +35,12 @@ for file in $dotfiles
 do
     echo "--- make $file ---"
     if [ ! -e $HOME/$file ]; then
-	ln -s $currentdir/$file $file
-	mv $file $HOME/$file
-	echo "OK."
+        ln -s $currentdir/$file $file
+        mv $file $HOME/$file
+        echo "OK."
     else
-	echo "File already exists."
-	echo "...skip"
+        echo "File already exists."
+        echo "...skip"
     fi
     echo "-----------------------"
     echo ""
