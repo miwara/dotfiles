@@ -4,16 +4,16 @@
 ;; 初期フレームの設定
 (setq default-frame-alist
       (append (list '(foreground-color . "white")
-		    '(background-color . "black")
-		    '(border-color . "black")
-		    '(mouse-color . "white")
-		    '(cursor-color . "blue")
-		    '(width . 100)
-		    '(height . 45)
-		    '(top . 15)
-		    '(left . 650)
-		    )
-	      default-frame-alist))
+                    '(background-color . "black")
+                    '(border-color . "black")
+                    '(mouse-color . "white")
+                    '(cursor-color . "blue")
+                    '(width . 100)
+                    '(height . 45)
+                    '(top . 15)
+                    '(left . 650)
+                    )
+      default-frame-alist))
 
 ;; フレームの透明度
 (set-frame-parameter (selected-frame) 'alpha '(0.75))
