@@ -5,17 +5,20 @@ set -eu
 currentdir=$(cd $(dirname $0); pwd)
 dotemacsdir="$HOME/.emacs.d"
 
-if [ ! -e ./tmp ]; then
-    mkdir ./tmp
-fi
-cd ./tmp
+dotemacsfiles="init.el Cask snippets"
+dotfiles=".zshrc .tmux.conf .gitignore .vimrc"
 
 if [ ! -e $dotemacsdir ]; then
     mkdir $dotemacsdir
 fi
 
-dotemacsfiles="init.el Cask snippets"
-dotfiles=".zshrc .tmux.conf .gitignore .vimrc"
+# 同名ファイルは2つ作れないので
+# ディレクトリを作ってその中で作業する
+# （いらないかも）
+if [ ! -e ./tmp ]; then
+    mkdir ./tmp
+fi
+cd ./tmp
 
 for file in $dotemacsfiles
 do
