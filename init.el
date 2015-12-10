@@ -10,7 +10,10 @@
 ;; (add-to-list 'load-path "~/.emacs.d/elisp/")
 
 ;; cask
-(require 'cask "~/.cask/cask.el")
+(if (eq system-type 'darwin)
+    (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+  (require 'cask "~/.cask/cask.el")
+  )
 (cask-initialize)
 (require 'pallet)
 
