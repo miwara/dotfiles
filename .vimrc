@@ -1,3 +1,5 @@
+:syntax enable
+
 set number
 set showmatch
 set tags=./tags, tags
