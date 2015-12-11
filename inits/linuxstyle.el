@@ -20,4 +20,4 @@
 
 ;; モードラインの背景，文字の色設定
 (set-face-background 'mode-line "OrangeRed3")
-(set-face-foreground 'mode-line "SeaGreen3")
+(set-face-foreground 'mode-line "black")
