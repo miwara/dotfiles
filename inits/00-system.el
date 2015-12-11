@@ -3,11 +3,11 @@
 ;; 簡略化
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; 分割windwにしたときのカーソル移動設定(Ctrl-Shift-←，↓，↑，→)
-(global-set-key (kbd "C-S-<left>") 'windmove-left)
-(global-set-key (kbd "C-S-<right>") 'windmove-right)
-(global-set-key (kbd "C-S-<up>") 'windmove-up)
-(global-set-key (kbd "C-S-<down>") 'windmove-down)
+;; 分割windwにしたときのカーソル移動設定(Meta-←，↓，↑，→)
+(global-set-key (kbd "ESC <left>") 'windmove-left)
+(global-set-key (kbd "ESC <right>") 'windmove-right)
+(global-set-key (kbd "ESC <up>") 'windmove-up)
+(global-set-key (kbd "ESC <down>") 'windmove-down)
 
 ;; C-; でリージョン選択した行をコメントアウト(コメントされている場合は復帰)
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
