@@ -40,3 +40,6 @@
 
 ;; ファイル末尾に改行を加える
 (setq require-final-newline t)
+
+;; バッファの自動再読み込み
+(global-auto-revert-mode t)
