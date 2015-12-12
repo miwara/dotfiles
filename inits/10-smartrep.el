@@ -22,8 +22,12 @@
 		       ("o" . (lambda () (other-window 1)))
 		       ("O" . (lambda () (other-window -1)))
 		       ;; tabbar
-		       ("s" . (lambda () (tabbar-forward-tab)))
-		       ("S" . (lambda () (tabbar-backward-tab)))
+		       ("]" . 'tabbar-forward-tab)
+		       ("[" . 'tabbar-backward-tab)
+		       ;; multiple-cursors
+		       ("C-q" . 'mc/mark-next-like-this)
+		       ("C-p" . 'mc/mark-previous-like-this)
+		       ("C-a" . 'mc/mark-all-like-this)
 		       ))
 
 ;; org-mode
