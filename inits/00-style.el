@@ -2,13 +2,13 @@
 
 ;; 画面設定
 (custom-set-faces
- '(default ((t (:background "billiard green" :foreground "#ffffff"))))
+  '(default ((t (:background "#006400" :foreground "#ffffff"))))
 )
 
 ;; region の色設定
 (setq transient-mark-mode t)
-(set-face-foreground 'region' "brightblack")
-(set-face-background 'region' "color-84")
+(set-face-foreground 'region' "#7f7f7f")
+(set-face-background 'region' "#5fff87")
 
 ;; フレームの透明度
 (set-frame-parameter (selected-frame) 'alpha '(0.75))
@@ -17,8 +17,8 @@
 (display-time)
 
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "yellow")
-(set-face-foreground 'highlight "black")
+(set-face-background 'hl-line "#ffff00")
+(set-face-foreground 'highlight "#000000")
 
 ;; 行番号・桁番号の表示
 (line-number-mode 1)
@@ -35,11 +35,11 @@
 ; 色
 (setq show-paren-style 'mixed)
 ;; match したときの設定
-(set-face-foreground 'show-paren-match-face "black")
-(set-face-background 'show-paren-match-face "green")
+(set-face-foreground 'show-paren-match-face "#000000")
+(set-face-background 'show-paren-match-face "#00cd00")
 ;; mismatch したときの設定
-(set-face-foreground 'show-paren-mismatch-face "black")
-(set-face-background 'show-paren-mismatch-face "light coral")
+(set-face-foreground 'show-paren-mismatch-face "#000000")
+(set-face-background 'show-paren-mismatch-face "#d70000")
 
 ;; 行末の空白を強調表示
 (require 'whitespace)
@@ -60,14 +60,14 @@
 (global-whitespace-mode 1)
 ; スペースの色設定
 (set-face-attribute 'whitespace-trailing nil
-                    :background "brightmagenta")
+                    :background "#ff00ff")
 (set-face-attribute 'whitespace-tab nil
-                    :background "brightblue")
+                    :background "#5c5cff")
 (set-face-attribute 'whitespace-space nil
-                    :foreground "brightgreen"
+                    :foreground "#00ff00"
                     :weight 'bold)
 (set-face-attribute 'whitespace-empty nil
-                    :background "brightcyan")
+                    :background "#00ffff")
 
 ;; タイトルバーにファイルのフルパス表示
 (setq frame-title-format

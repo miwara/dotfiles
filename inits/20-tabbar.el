@@ -22,20 +22,20 @@
 ;; 色設定
 (set-face-attribute ; バー自体の色
  'tabbar-default nil
- :background "white"
+ :background "#e5e5e5"
  :family "Inconsolata"
  :height 1.0
 )
 (set-face-attribute ; アクティブなタブ
  'tabbar-selected nil
- :background "black"
- :foreground "white"
+ :background "#000000"
+ :foreground "#e5e5e5"
  :weight 'bold
  :box nil
 )
 (set-face-attribute ; 非アクティブなタブ
  'tabbar-unselected nil
- :background "white"
- :foreground "black"
+ :background "#e5e5e5"
+ :foreground "#000000"
  :box nil
 )
