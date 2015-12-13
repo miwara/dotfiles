@@ -1,18 +1,9 @@
 ;; Emacs common style
 
-;; 初期フレームの設定
-(setq default-frame-alist
-      (append (list '(foreground-color . "white")
-                    '(background-color . "black")
-                    '(border-color . "black")
-                    '(mouse-color . "white")
-                    '(cursor-color . "blue")
-                    '(width . 100)
-                    '(height . 45)
-                    '(top . 15)
-                    '(left . 650)
-                    )
-      default-frame-alist))
+;; 画面設定
+(custom-set-faces
+ '(default ((t (:background "billiard green" :foreground "#ffffff"))))
+)
 
 ;; region の色設定
 (setq transient-mark-mode t)
