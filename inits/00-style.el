@@ -2,7 +2,7 @@
 
 ;; 画面設定
 (custom-set-faces
-  '(default ((t (:background "#006400" :foreground "#ffffff"))))
+  '(default ((t (:background "#000000" :foreground "#ffffff"))))
 )
 
 ;; region の色設定
