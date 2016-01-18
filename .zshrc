@@ -129,6 +129,7 @@ alias gth="git reset --hard"
 
 alias gss="git stash save"
 alias gsp="git stash pop"
+#alias gds="git diff HEAD..stash@{}" aliasではなくて関数でやるべきかも
 
 alias gclf="git clean -f"
 
