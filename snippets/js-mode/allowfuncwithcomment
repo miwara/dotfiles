@@ -1,0 +1,12 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: allowfunc with comment
+# key: =>
+# --
+/**
+ *  ${4:[description]}
+ *  @param  {${5:[type]}} $2
+ *  @returns {${6:[type]}} ${7:description}
+ */
+var ${1:name} = ($2) => {
+	$0
+};
