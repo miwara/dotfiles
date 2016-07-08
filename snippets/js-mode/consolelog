@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: consolelog
+# key: console
+# --
+console.log($1); //TODO:消す
