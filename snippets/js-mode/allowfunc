@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: allowfunc
+# key: =>
+# --
+var ${1:name} = ($2) => {
+	$0
+};

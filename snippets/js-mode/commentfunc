@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: commentfunc
+# key: /**
+# --
+/**
+ *  ${1:[description]}
+ *  @param  {${2:[type]}} ${3:argument 1}
+ *  @returns {${4:[type]}} ${5:description}
+ */
+$0

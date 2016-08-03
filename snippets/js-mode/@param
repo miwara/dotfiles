@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: @param
+# key: @p
+# --
+*  @param  {${1:[type]}} ${2:argument}
