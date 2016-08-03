@@ -2,13 +2,13 @@
 
 (require 'smartrep)
 
-;; prefix キー
-(defvar ctl-q-map (make-keymap))
-(define-key global-map "\C-q" ctl-q-map)
+;; prefix キー(使えない)
+(defvar ctl-meta-q-map (make-keymap))
+(define-key global-map "\C-\M-q" ctl-shift-q-map)
 
 ;; 基本コマンド
 (smartrep-define-key
-    global-map "C-q" '(
+    global-map "C-M-q" '(
 		       ;; main-window
 		       ("n" . (lambda () (scroll-up 1)))
 		       ("p" . (lambda () (scroll-up -1)))
