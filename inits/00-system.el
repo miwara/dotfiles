@@ -43,3 +43,6 @@
 
 ;; バッファの自動再読み込み
 (global-auto-revert-mode t)
+
+;; ビープ音の代わりに画面フラッシュ
+(setq visible-bell t)
