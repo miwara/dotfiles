@@ -53,6 +53,7 @@ setopt auto_pushd		# 移動したディレクトリを記録
 setopt correct			# 間違えて入力したコマンドの修正
 setopt list_packed		# 補完候補を詰めて表示
 setopt extended_glob		# 拡張グロブ
+setopt no_beep			# ビープ音なし
 
 bindkey -e
 
