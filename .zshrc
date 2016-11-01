@@ -207,3 +207,6 @@ function do_enter() {
 }
 zle -N do_enter
 bindkey '^m' do_enter
+
+# ローカルでの設定
+[ -f ~/.local ] && source ~/.local
