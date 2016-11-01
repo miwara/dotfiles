@@ -161,6 +161,9 @@ case ${OSTYPE} in
         ;;
 esac
 
+# composer関連
+alias composer="php /usr/bin/composer.phar"
+
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
