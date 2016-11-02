@@ -161,6 +161,9 @@ case ${OSTYPE} in
         ;;
 esac
 
+# composer関連
+alias composer="php /usr/bin/composer.phar"
+
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -204,3 +207,6 @@ function do_enter() {
 }
 zle -N do_enter
 bindkey '^m' do_enter
+
+# ローカルでの設定
+[ -f ~/.local ] && source ~/.local
