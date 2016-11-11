@@ -6,6 +6,13 @@ export PATH="/usr/local/bin/:$PATH"
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
+# nodebrew
+# nodeのバージョン管理
+nodebrewpath=$HOME/.nodebrew/current/bin
+if [[ -e $nodebrewpath ]]; then
+    export PATH="$nodebrewpath:$PATH"
+fi
+
 # rbenv
 # cygwinでchefを使うときに必要
 rbenvpath=$HOME/.rbenv/bin
