@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: render for React.js
+# key: render
+# --
+render() {
+  return (
+      <div>
+        $0
+      </div>
+  );
+}
