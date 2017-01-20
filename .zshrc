@@ -169,7 +169,7 @@ case ${OSTYPE} in
 esac
 
 # composer関連
-alias composer="php /usr/bin/composer.phar"
+alias composer="php /usr/local/bin/composer"
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
