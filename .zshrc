@@ -215,5 +215,11 @@ function do_enter() {
 zle -N do_enter
 bindkey '^m' do_enter
 
+# iTem2 でタブ名を引数の名前に固定する
+function setTabNameforiTem2() {
+    echo -ne "\e]1;$1\a"
+    return 0
+}
+
 # ローカルでの設定
 [ -f ~/.local ] && source ~/.local
