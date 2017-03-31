@@ -1,6 +1,9 @@
 # -*- mode: snippet; require-final-newline: nil -*-
-# name: var_dump
-# key: var_dump
+# name: trait
+# key: trait
 # binding: direct-keybinding
 # --
-var_dump($0);exit; // TODO: 消す
+trait $1
+{
+	$0
+}

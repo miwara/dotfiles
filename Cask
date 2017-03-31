@@ -25,7 +25,6 @@
 (depends-on "s")
 (depends-on "shut-up")
 (depends-on "smartrep")
-(depends-on "tabbar")
 (depends-on "undo-tree")
 (depends-on "undohist")
 (depends-on "visual-regexp")

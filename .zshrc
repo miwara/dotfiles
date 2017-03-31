@@ -6,6 +6,13 @@ export PATH="/usr/local/bin/:$PATH"
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
+# nodebrew
+# nodeのバージョン管理
+nodebrewpath=$HOME/.nodebrew/current/bin
+if [[ -e $nodebrewpath ]]; then
+    export PATH="$nodebrewpath:$PATH"
+fi
+
 # rbenv
 # cygwinでchefを使うときに必要
 rbenvpath=$HOME/.rbenv/bin
@@ -130,6 +137,7 @@ alias gth="git reset --hard"
 
 alias gss="git stash save"
 alias gsp="git stash pop"
+#alias gds="git diff HEAD..stash@{}" aliasではなくて関数でやるべきかも
 
 alias gclf="git clean -f"
 
@@ -159,6 +167,9 @@ case ${OSTYPE} in
         alias tmux="rm -r /tmp/tmux* && tmux -2"
         ;;
 esac
+
+# composer関連
+alias composer="php /usr/local/bin/composer"
 
 # コマンド履歴関連
 HISTFILE=~/.zsh_history
@@ -203,3 +214,12 @@ function do_enter() {
 }
 zle -N do_enter
 bindkey '^m' do_enter
+
+# iTem2 でタブ名を引数の名前に固定する
+function setTabNameforiTem2() {
+    echo -ne "\e]1;$1\a"
+    return 0
+}
+
+# ローカルでの設定
+[ -f ~/.local ] && source ~/.local
