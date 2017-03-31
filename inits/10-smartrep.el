@@ -4,7 +4,7 @@
 
 ;; prefix キー(使えない)
 (defvar ctl-meta-q-map (make-keymap))
-(define-key global-map "\C-\M-q" ctl-shift-q-map)
+(define-key global-map "\C-\M-q" ctl-meta-q-map)
 
 ;; 基本コマンド
 (smartrep-define-key
