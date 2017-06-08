@@ -6,12 +6,15 @@ export PATH="/usr/local/bin/:$PATH"
 # 文字コードの設定
 export LANG=ja_JP.UTF-8
 
-# nodebrew
 # nodeのバージョン管理
+# nodebrew
 nodebrewpath=$HOME/.nodebrew/current/bin
 if [[ -e $nodebrewpath ]]; then
     export PATH="$nodebrewpath:$PATH"
 fi
+
+# nodist
+NODIST_BIN_DIR__=$(echo "$NODIST_PREFIX" | sed -e 's,\\,/,g')/bin; if [ -f "$NODIST_BIN_DIR__/nodist.sh" ]; then . "$NODIST_BIN_DIR__/nodist.sh"; fi; unset NODIST_BIN_DIR__;
 
 # rbenv
 # cygwinでchefを使うときに必要
