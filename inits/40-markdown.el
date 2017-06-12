@@ -11,4 +11,6 @@
 (add-to-list 'auto-mode-alist '("\\.md$" . gfm-mode))
 (add-to-list 'auto-mode-alist '("README\\.md$" . gfm-mode))
 
-(setq markdown-command "pandoc")
+;; https://github.com/sindresorhus/github-markdown-css
+;; ↑ここからgithubに似たCSSをcloneしてきた
+(setq markdown-command "pandoc -c ~/.pandoc/github-markdown/github-markdown.css")
