@@ -10,7 +10,7 @@ GIT_PS1_SHOWUPSTREAM=auto
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
-export PS1='[\u@\h \[\e[42m\]\W\[\e[0m\]] \[\e[34m\e[47m\]$(_git_ps1)\[\e[0m\]\n\$ '
+export PS1='[\u@\h \[\e[42m\]\w\[\e[0m\]] \[\e[34m\e[47m\]$(_git_ps1)\[\e[0m\]\n\$ '
 
 alias e="emacs"
 
