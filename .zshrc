@@ -4,7 +4,7 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/bin/:$PATH"
 
 # 文字コードの設定
-export LANG=ja_JP.UTF-8
+export LANG=en_US.UTF-8
 
 # nodeのバージョン管理
 # nodebrew
