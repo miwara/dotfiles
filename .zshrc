@@ -91,21 +91,21 @@ case ${USERNAME} in
  	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
  	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
  	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
- 	SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:% {${reset_color}%} "
+ 	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
  	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
  	;;
     'vagrant')
 	PROMPT="%U%F{white}%K{green}%B%m:%n%#%b%k%f%u "
  	PROMPT2="%F{white}%K{green}%B%m:%n%#%b%k%f "
 	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
-	SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:% {${reset_color}%} "
+	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
 	;;
     *)
 	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
 	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
 	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
-	SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:% {${reset_color}%} "
+	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
  	;;
 esac
