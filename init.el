@@ -1,5 +1,9 @@
-;; init.el
+;; æ–‡å­—ã‚³ãƒ¼ãƒ‰
+(setq default-buffer-file-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
 
+;; package.elã®è¨­å®š
 (require 'package)
 (package-initialize)
 
@@ -14,11 +18,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
-
-;; •¶šƒR[ƒh
-(setq default-buffer-file-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(prefer-coding-system 'utf-8)
 
 
 ;; init-loader
