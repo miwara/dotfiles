@@ -3,7 +3,6 @@
 
 
 (require 'auto-complete-config)
-(require 'ac-dabbrev)
 
 ;; ベースとなるソースの指定
 (setq-default ac-sources '(
