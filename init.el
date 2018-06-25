@@ -1,6 +1,15 @@
 ;; init.el
 
+(require 'package)
 (package-initialize)
+
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+	("melpa" . "http://melpa.org/packages/")
+	("org" . "http://orgmode.org/elpa")))
+
+(unless package-archive-contents
+  (package-refresh-contents))
 
 ;; ï∂éöÉRÅ[Éh
 (setq default-buffer-file-coding-system 'utf-8)
