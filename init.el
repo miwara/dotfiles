@@ -19,7 +19,13 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; use-packageの設定
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
+(require 'use-package)
 
 ;; init-loader
-(require 'init-loader)
-(init-loader-load "~/dotfiles/inits")
+(use-package init-loader
+	     :ensure t
+	     :config
+	     (init-loader-load "~/dotfiles/inits"))
