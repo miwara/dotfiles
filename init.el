@@ -21,5 +21,5 @@
 
 
 ;; init-loader
-;;(require 'init-loader)
-;;(init-loader-load "~/dotfiles/inits")
+(require 'init-loader)
+(init-loader-load "~/dotfiles/inits")
