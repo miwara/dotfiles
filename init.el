@@ -11,14 +11,6 @@
 ;; 
 ;; (add-to-list 'load-path "~/.emacs.d/elisp/")
 
-;; cask
-(if (eq system-type 'darwin)
-    (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-  (require 'cask "~/.cask/cask.el")
-  )
-(cask-initialize)
-(require 'pallet)
-
 ;; init-loader
 (require 'init-loader)
 (init-loader-load "~/dotfiles/inits")

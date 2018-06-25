@@ -32,9 +32,6 @@ if [[ -e $pyenvpath ]]; then
     eval "$(pyenv init -)"
 fi
 
-# cask
-export PATH="$HOME/.cask/bin:$PATH"
-
 # coreutils
 case ${OSTYPE} in
     darwin*)
