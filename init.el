@@ -26,6 +26,5 @@
 
 ;; init-loader
 (use-package init-loader
-	     :ensure t
 	     :config
 	     (init-loader-load "~/dotfiles/inits"))
