@@ -8,7 +8,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (use-package markdown-mode smartrep auto-complete elixir-mode flycheck go-mode helm magit multiple-cursors open-junk-file php-mode popup popwin web-mode js2-mode yasnippet init-loader))))
+    (use-package markdown-mode auto-complete elixir-mode flycheck go-mode helm magit multiple-cursors open-junk-file php-mode popup popwin web-mode js2-mode yasnippet init-loader))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
