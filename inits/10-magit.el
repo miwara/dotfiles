@@ -1,4 +1,6 @@
 ;; magit
 ;; http://www.emacswiki.org/emacs/Magit
 
-(require 'magit)
+(use-package magit
+  :defer t
+  )
