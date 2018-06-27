@@ -12,14 +12,9 @@
 	 ;; C-hで削除
 	 :map helm-map
 	 ("C-h" . delete-backward-char)
+	 ([?\t] . helm-execute-persistent-action)
 	 :map helm-find-files-map
 	 ("C-h" . delete-backward-char)
-
-	 ;; Tabで補完
-	 :map helm-find-files-map
-	 ([?\t] . helm-execute-persistent-action)
-	 :map helm-read-file-map
-	 ([?\t] . helm-execute-persistent-action)
   )
 
   :config
