@@ -1,6 +1,7 @@
 ;; Elixir mode
 
-(require 'elixir-mode)
-
-(add-to-list 'auto-mode-alist '("\\.exs$" . elixir-mode))
-(add-to-list 'auto-mode-alist '("\\.ex$" . elixir-mode))
+(use-package elixir-mode
+  :defer t
+  :mode (("\\.exs\\'" . elixir-mode)
+	 ("\\.ex\\'" . elixir-mode))
+  )
