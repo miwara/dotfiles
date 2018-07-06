@@ -1,4 +1,5 @@
 ;; multiple-cursors
 ;; https://github.com/emacsmirror/multiple-cursors
 
-(require 'multiple-cursors)
+(use-package multiple-cursors
+  :defer t)

@@ -35,11 +35,11 @@
 ; 色
 (setq show-paren-style 'mixed)
 ;; match したときの設定
-(set-face-foreground 'show-paren-match-face "#000000")
-(set-face-background 'show-paren-match-face "#00cd00")
+(set-face-foreground 'show-paren-match "#000000")
+(set-face-background 'show-paren-match "#00cd00")
 ;; mismatch したときの設定
-(set-face-foreground 'show-paren-mismatch-face "#000000")
-(set-face-background 'show-paren-mismatch-face "#d70000")
+(set-face-foreground 'show-paren-mismatch "#000000")
+(set-face-background 'show-paren-mismatch "#d70000")
 
 ;; 行末の空白を強調表示
 (require 'whitespace)

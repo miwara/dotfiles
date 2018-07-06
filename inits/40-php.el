@@ -1,5 +1,6 @@
 ;; php mode
 
-(require 'php-mode)
-
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(use-package php-mode
+  :defer t
+  :mode ("\\.php\\'" . php-mode)
+  )

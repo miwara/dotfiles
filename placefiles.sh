@@ -5,7 +5,7 @@ set -eu
 currentdir=$(cd $(dirname $0); pwd)
 dotemacsdir="$HOME/.emacs.d"
 
-dotemacsfiles="init.el Cask snippets"
+dotemacsfiles="init.el custom.el snippets"
 dotfiles=".zshrc .tmux.conf .gitignore .vimrc"
 
 if [ ! -e $dotemacsdir ]; then
