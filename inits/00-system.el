@@ -4,10 +4,10 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; 分割windwにしたときのカーソル移動設定(Meta-←，↓，↑，→)
-(global-set-key (kbd "ESC <left>") 'windmove-left)
-(global-set-key (kbd "ESC <right>") 'windmove-right)
-(global-set-key (kbd "ESC <up>") 'windmove-up)
-(global-set-key (kbd "ESC <down>") 'windmove-down)
+(global-set-key (kbd "<M-left>") 'windmove-left)
+(global-set-key (kbd "<M-right>") 'windmove-right)
+(global-set-key (kbd "<M-up>") 'windmove-up)
+(global-set-key (kbd "<M-down>") 'windmove-down)
 
 ;; 1. transient-mark-mode がオンでリージョンが有効のときに M-; すると、コメントアウト、もしくは解除のコマンドになる
 ;; 2. transient-mark-mode がオンでリージョンが有効のときに C-u 数値 M-; すると、コメント文字列を数値分にする(下に補足説明あり)
