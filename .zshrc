@@ -16,6 +16,11 @@ fi
 # nodist
 NODIST_BIN_DIR__=$(echo "$NODIST_PREFIX" | sed -e 's,\\,/,g')/bin; if [ -f "$NODIST_BIN_DIR__/nodist.sh" ]; then . "$NODIST_BIN_DIR__/nodist.sh"; fi; unset NODIST_BIN_DIR__;
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # rbenv
 # cygwinでchefを使うときに必要
 rbenvpath=$HOME/.rbenv/bin
@@ -156,7 +161,8 @@ else
 fi
 
 # java関連
-alias javac="javac -J-Dfile.encoding=UTF-8" # 文字化け対策
+# 文字化け対策
+alias javac="javac -J-Dfile.encoding=UTF-8"
 
 # tmux関連 /tmp以下の関連ファイルを削除しないと起動できないので
 case ${OSTYPE} in
