@@ -167,16 +167,6 @@ fi
 # 文字化け対策
 alias javac="javac -J-Dfile.encoding=UTF-8"
 
-# tmux関連 /tmp以下の関連ファイルを削除しないと起動できないので
-case ${OSTYPE} in
-    darwin*)
-        alias tmux="tmux -2"
-        ;;
-    *)
-        alias tmux="rm -r /tmp/tmux* && tmux -2"
-        ;;
-esac
-
 # composer関連
 alias composer="php /usr/local/bin/composer"
 

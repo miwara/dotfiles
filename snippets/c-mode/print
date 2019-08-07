@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Another key of printf (This snippet is printf same)
+# key: print
+# --
+printf("$1\n", $2);
+$0
