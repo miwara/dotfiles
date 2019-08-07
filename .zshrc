@@ -37,6 +37,9 @@ if [[ -e $pyenvpath ]]; then
     eval "$(pyenv init -)"
 fi
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # coreutils
 case ${OSTYPE} in
     darwin*)
