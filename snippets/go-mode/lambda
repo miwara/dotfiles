@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: lambda
+# key: lambda
+# --
+func ($1) $2 {
+     $0
+}(${1:$(car (split-string yas-text " "))})
