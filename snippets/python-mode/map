@@ -1,0 +1,4 @@
+# key: map
+# name: map
+# --
+map(${1:int}, ${2:input().split()})$0
