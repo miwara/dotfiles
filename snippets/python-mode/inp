@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Another key of input (This snippet is input same)
+# key: inp
+# --
+input()$0
