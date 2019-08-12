@@ -1,0 +1,6 @@
+# key: type
+# name: type
+# --
+type ${1:Name} ${2:interface or struct} {
+     $0
+}
