@@ -38,7 +38,9 @@ if [[ -e $pyenvpath ]]; then
 fi
 
 # direnv
-eval "$(direnv hook zsh)"
+if test $OSTYPE != "cygwin" && $OSTYPE != "msys"; then
+    eval "$(direnv hook zsh)"
+fi
 
 # coreutils
 case ${OSTYPE} in
