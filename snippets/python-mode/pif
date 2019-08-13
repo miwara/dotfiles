@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: if in print
-# key: pif
-# --
-if $1 else $0

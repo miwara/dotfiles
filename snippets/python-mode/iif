@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: inner if-else
+# key: iif
+# --
+${1:consequence} if ${2:condition} else ${0:alternative}
