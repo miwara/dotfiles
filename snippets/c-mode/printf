@@ -2,5 +2,4 @@
 # name: printf
 # key: printf
 # --
-printf("$1\n", $2);
-$0
+printf("$1\n", $2);$0
