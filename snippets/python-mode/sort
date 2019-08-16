@@ -1,4 +1,4 @@
 # key: sort
 # name: sort
 # --
-.sort($1)$0
+sort($1)$0

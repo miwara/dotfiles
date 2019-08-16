@@ -2,4 +2,4 @@
 # name: split
 # key: split
 # --
-.split($1)$0
+split($1)$0

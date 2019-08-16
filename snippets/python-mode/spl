@@ -2,4 +2,4 @@
 # name: Another key of split (This snippet is split same)
 # key: spl
 # --
-.split($1)$0
+split($1)$0

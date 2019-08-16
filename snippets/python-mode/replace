@@ -2,4 +2,4 @@
 # name: replace
 # key: replace
 # --
-.replace($1)$0
+replace($1)$0
