@@ -2,6 +2,6 @@
 # name: func
 # key: func
 # --
-func ${1:FunctionName}(${2:Params}) {
+func ${1: }${2:FunctionName}(${3:Params}) ${4: }{
      $0
 }
