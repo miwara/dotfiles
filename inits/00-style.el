@@ -17,7 +17,7 @@
 (display-time)
 
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#ffff00")
+(set-face-background 'hl-line "#5f5fff")
 (set-face-foreground 'highlight "#000000")
 
 ;; 行番号・桁番号の表示
