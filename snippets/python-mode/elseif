@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: elseif
+# key: elseif
+# --
+elif ${1:condition}:
+     $0
