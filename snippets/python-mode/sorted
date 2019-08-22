@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sorted
+# key: sorted
+# --
+sorted(${1:iterable})$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: complex
+# key: complex
+# --
+complex(${1:real}, ${2:imag})$0

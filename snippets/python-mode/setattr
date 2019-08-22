@@ -1,0 +1,4 @@
+# key: setattr
+# name: setattr
+# --
+setattr(${1:object}, ${2:name}, ${3:value})$0

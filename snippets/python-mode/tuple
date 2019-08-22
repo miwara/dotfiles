@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tuple
+# key: tuple
+# --
+tuple($0)

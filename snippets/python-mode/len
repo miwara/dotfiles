@@ -2,4 +2,4 @@
 # name: len
 # key: len
 # --
-len($1)$0
+len($0)
