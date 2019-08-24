@@ -2,4 +2,4 @@
 # name: abs
 # key: abs
 # --
-abs($1)$0
+abs($0)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: oct
+# key: oct
+# --
+oct($0)

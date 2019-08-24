@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: hasattr
+# key: hasattr
+# --
+hasattr(${1:object}, ${2:name})$0

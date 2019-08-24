@@ -2,4 +2,4 @@
 # name: set
 # key: set
 # --
-set($1)$0
+set($0)
