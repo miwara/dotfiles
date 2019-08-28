@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: get_event_loop
+# key: geteventloop
+# --
+${1:loop} = asyncio.get_event_loop()$0
