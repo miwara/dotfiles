@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fatalf
+# key: fatalf
+# --
+t.Fatalf($0)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: copy
+# key: copy
+# --
+copy(${1:dst}, ${2:src []Type})
