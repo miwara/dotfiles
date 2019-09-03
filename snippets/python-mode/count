@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: count
+# key: count
+# --
+count($0)

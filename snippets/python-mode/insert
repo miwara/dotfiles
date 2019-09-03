@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: insert
+# key: insert
+# --
+insert(${1:index}, ${0:value})

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clear
+# key: clear
+# --
+clear()$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pop
+# key: pop
+# --
+pop(${0:index})
