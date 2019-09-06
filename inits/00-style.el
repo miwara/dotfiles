@@ -76,6 +76,9 @@
 ;; 1行ずつスクロール
 (setq scroll-step 1)
 
+;; 過去のマークを C-u C-SPC C-SPC... と C-SPC の連打でたどる
+(setq set-mark-command-repeat-pop t)
+
 ;; Ctrl-Shift-k でカーソル位置から行頭まで削除
 (defun backward-kill-line (arg)
   "Kill chars backward until encoutering the end of a line"
