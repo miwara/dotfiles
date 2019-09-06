@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: gofunc
+# key: gofunc
+# --
+go func(${1:param type}) {
+   $0
+}(${1:$(car (split-string yas-text " "))})
