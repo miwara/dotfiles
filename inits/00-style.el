@@ -76,10 +76,6 @@
 ;; 1行ずつスクロール
 (setq scroll-step 1)
 
-;; 矩形選択
-(cua-mode t)
-(setq cua-enable-cua-key nil)
-
 ;; Ctrl-Shift-k でカーソル位置から行頭まで削除
 (defun backward-kill-line (arg)
   "Kill chars backward until encoutering the end of a line"
