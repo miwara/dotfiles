@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: except
+# key: except
+# --
+except ${1:Error}:
+       $0

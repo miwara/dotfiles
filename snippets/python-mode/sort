@@ -1,0 +1,4 @@
+# key: sort
+# name: sort
+# --
+sort($1)$0

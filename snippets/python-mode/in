@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: in
+# key: in
+# --
+${1:value} in ${0:list}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: run_until_complete
+# key: rununtilcomplete
+# --
+run_until_complete(${1:async func})$0

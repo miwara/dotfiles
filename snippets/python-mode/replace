@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: replace
+# key: replace
+# --
+replace($1)$0

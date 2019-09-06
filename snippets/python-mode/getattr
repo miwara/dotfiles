@@ -1,0 +1,4 @@
+# key: getattr
+# name: getattr
+# --
+getattr(${1:object}, ${2:name})$0

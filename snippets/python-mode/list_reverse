@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: list reverse
+# key: reverse
+# --
+reverse()$0

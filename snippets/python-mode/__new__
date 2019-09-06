@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: __new__
+# key: new
+# --
+def __new__(cls):
+    $0

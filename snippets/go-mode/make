@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: make
+# key: make
+# --
+make(${1:t Type}, ${2:size ...IntegerType})$0

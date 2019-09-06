@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: notin
+# key: notin
+# --
+${1:value} not in ${0:list}

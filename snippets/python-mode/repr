@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: repr
+# key: repr
+# --
+repr(${1:object})$0

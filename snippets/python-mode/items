@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: items
+# key: items
+# --
+items()$0

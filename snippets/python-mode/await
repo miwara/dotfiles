@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: await
+# key: await
+# --
+await ${1:async func}$0

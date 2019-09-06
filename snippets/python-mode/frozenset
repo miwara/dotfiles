@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: frozenset
+# key: frozenset
+# --
+frozenset($0)

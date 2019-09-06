@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: delattr
+# key: delattr
+# --
+delattr(${1:object}, ${2:name})$0

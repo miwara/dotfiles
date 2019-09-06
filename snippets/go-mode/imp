@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Another key of import (This snippet is import same)
+# key: imp
+# --
+import ${1:"fmt"}$0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: reversed
+# key: reversed
+# --
+reversed(${1:seq})$0

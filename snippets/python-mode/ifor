@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: inner for
+# key: ifor
+# --
+for ${1:i} in ${2:range}$0

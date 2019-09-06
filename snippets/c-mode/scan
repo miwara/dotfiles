@@ -2,5 +2,4 @@
 # name: Another key of scanf (This snippet is scanf same)
 # key: scan
 # --
-scanf("$1", &$2);
-$0
+scanf("$1", &$2);$0

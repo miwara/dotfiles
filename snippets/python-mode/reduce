@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: reduce
+# key: reduce
+# --
+reduce(${1:func}, ${2:iterable}${3:, initializer(option)})$0

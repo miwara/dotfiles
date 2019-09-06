@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: __del__
+# key: del
+# --
+def __del__(self):
+    $0

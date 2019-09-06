@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dict
+# key: dict
+# --
+dict($0)

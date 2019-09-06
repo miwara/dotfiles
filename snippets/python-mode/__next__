@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: __next__
+# key: next
+# --
+def __next__(self):
+    $0
