@@ -87,9 +87,6 @@
   (kill-line 0))
 (global-set-key (kbd "C-S-k") 'backward-kill-line)
 
-;; 指定行へ移動
-(global-set-key (kbd "C-c l") 'goto-line)
-
 ;; 環境によって設定を切り替え
 (if (eq system-type 'cygwin)
     (load "~/dotfiles/inits/windowsstyle.el")
