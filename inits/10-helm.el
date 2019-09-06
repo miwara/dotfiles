@@ -2,6 +2,7 @@
 
 (use-package helm-config
   :init (helm-mode t)
+  :init (recentf-mode t)
 
   :bind (("M-x" . helm-M-x)
 	 ("C-x C-f" . helm-find-files)
@@ -23,4 +24,7 @@
     "Execute command only of CANDIDATE exists"
     (when (file-exists-p candidate)
       ad-do-it))
+
+  (setq recentf-max-saved-items 2000)
+  (setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
 )

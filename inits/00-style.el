@@ -76,9 +76,8 @@
 ;; 1行ずつスクロール
 (setq scroll-step 1)
 
-;; 矩形選択
-(cua-mode t)
-(setq cua-enable-cua-key nil)
+;; 過去のマークを C-u C-SPC C-SPC... と C-SPC の連打でたどる
+(setq set-mark-command-repeat-pop t)
 
 ;; Ctrl-Shift-k でカーソル位置から行頭まで削除
 (defun backward-kill-line (arg)
@@ -86,9 +85,6 @@
   (interactive "p")
   (kill-line 0))
 (global-set-key (kbd "C-S-k") 'backward-kill-line)
-
-;; 指定行へ移動
-(global-set-key (kbd "C-c l") 'goto-line)
 
 ;; 環境によって設定を切り替え
 (if (eq system-type 'cygwin)
