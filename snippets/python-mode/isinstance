@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: isinstance
+# key: isinstance
+# --
+isinstance(${1:object}, ${2:type})
