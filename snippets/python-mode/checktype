@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: checktype
+# key: checktype
+# --
+if not isinstance(${1:object}, ${2:type}):
+   return ${3:None}
