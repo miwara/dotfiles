@@ -2,4 +2,4 @@
 # name: inner for
 # key: ifor
 # --
-for ${1:i} in ${2:range}$0
+${3:stmt} for ${1:i} in ${2:range}$0
