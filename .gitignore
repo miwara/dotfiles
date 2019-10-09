@@ -1,6 +1,7 @@
 ,
 *~
 *.o
+*.elc
 tags
 tags-e
 .DS_Store
