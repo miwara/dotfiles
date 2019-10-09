@@ -29,8 +29,7 @@
 (global-set-key (kbd "M-p") (lambda () (interactive) (scroll-up -1)))
 
 ;; ファイル内カーソル位置を記憶
-(setq-default save-place t)
-(require 'saveplace)
+(setq-default save-place-mode t)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
