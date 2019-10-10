@@ -4,7 +4,7 @@
 # --
 import asyncio
 
-async def ${1:funcname}(${2:param:type}) -> ${3:None}:
+async def ${1:funcname}(${2:param: type}) -> ${3:None}:
       ${0:pass}
 
 ${4:loop} = asyncio.get_event_loop()
