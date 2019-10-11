@@ -2,4 +2,4 @@
 # name: inner if-else
 # key: iif
 # --
-${1:consequence} if ${2:condition} else ${0:alternative}
+${1:consequence} if ${2:condition} else ${3:alternative}$0
