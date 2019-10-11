@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: upper
+# key: upper
+# --
+upper()$0

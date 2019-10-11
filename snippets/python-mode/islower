@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: islower
+# key: islower
+# --
+islower()$0

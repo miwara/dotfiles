@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: isupper
+# key: isupper
+# --
+isupper()$0
