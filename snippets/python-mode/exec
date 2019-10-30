@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: exec
+# key: exec
+# --
+exec(${1:objcet})$0

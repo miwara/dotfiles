@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: enumerate
+# key: enumerate
+# --
+enumerate(${1:iterable})$0

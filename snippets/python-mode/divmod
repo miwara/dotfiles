@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: divmod
+# key: divmod
+# --
+divmod(${1:a}, ${2:b})$0

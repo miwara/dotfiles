@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: compile
+# key: compile
+# --
+compile(${1:source}, ${2:filename or <string>}, ${3:exec or eval or single})$0
