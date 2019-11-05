@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: radians
+# key: rad
+# --
+radians(${1:x})$0

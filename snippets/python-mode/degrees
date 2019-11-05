@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: degrees
+# key: deg
+# --
+degrees(${1:x})$0

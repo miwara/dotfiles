@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: gcd
+# key: gcd
+# --
+gcd(${1:a}, ${2:b})$0
