@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: listmap
+# key: listmap
+# --
+*${1:name}, = map(int, input().split())$0
