@@ -73,19 +73,6 @@
 (setq frame-title-format
       (format "%%f - Emacs@%s" (system-name)))
 
-;; 1行ずつスクロール
-(setq scroll-step 1)
-
-;; 過去のマークを C-u C-SPC C-SPC... と C-SPC の連打でたどる
-(setq set-mark-command-repeat-pop t)
-
-;; Ctrl-Shift-k でカーソル位置から行頭まで削除
-(defun backward-kill-line (arg)
-  "Kill chars backward until encoutering the end of a line"
-  (interactive "p")
-  (kill-line 0))
-(global-set-key (kbd "C-S-k") 'backward-kill-line)
-
 ;; 環境によって設定を切り替え
 (if (eq system-type 'cygwin)
     (load "~/dotfiles/inits/windowsstyle.el")
