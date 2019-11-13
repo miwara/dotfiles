@@ -11,4 +11,11 @@
   :mode (("\\.markdown\\'" . markdown-mode)
 	 ("\\.md\\'" . gfm-mode)
 	 ("README\\.md\\'" . gfm-mode))
+
+  :bind(:map gfm-mode-map
+	     ("M-p" . nil)
+	     ("M-n" . nil)
+	     ("M-\S-p" . markdown-previous-link)
+	     ("M-\S-n" . markdown-next-link)
+	     )
   )
