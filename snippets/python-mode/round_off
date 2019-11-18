@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: round off
+# key: round
+# --
+round = lambda x:int((x*2+1)//2)
