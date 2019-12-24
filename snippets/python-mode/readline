@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: readline
+# key: readline
+# --
+import sys
+input = sys.stdin.readline
