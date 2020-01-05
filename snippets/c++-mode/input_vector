@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: input vector
+# key: invec
+# --
+vector<${1:Type}> ${2:Name}(${3:Elements});
+for (int i = 0; i < $3; i++) cin >> $2.at(i);

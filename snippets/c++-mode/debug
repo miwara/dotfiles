@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: debug
+# key: debug
+# --
+#define _GLIBCXX_DEBUG
+#define _LIBCPP_DEBUG 0

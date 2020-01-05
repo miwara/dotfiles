@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: using_namespace_std
+# key: std
+# --
+using namespace std;

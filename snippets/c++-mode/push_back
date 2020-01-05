@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: push_back
+# key: push
+# --
+push_back(${0:Element});

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: getline
+# key: getline
+# --
+getline(${1:cin}, ${2:str});

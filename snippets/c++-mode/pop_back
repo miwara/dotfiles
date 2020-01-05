@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pop_back
+# key: pop
+# --
+pop_back(${0:Index});

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: at
+# key: at
+# --
+at(${0:Index});

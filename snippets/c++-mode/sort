@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sort
+# key: sort
+# --
+sort(${1:vec.begin()}, ${2:vec.end()});

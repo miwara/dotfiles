@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: reverse
+# key: reverse
+# --
+reverse(${1:vec.begin()}, ${2:vec.end()});
