@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: bisect_left
+# key: bisectleft
+# --
+bisect_left(${1:Element}, ${2:list})
