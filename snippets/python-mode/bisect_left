@@ -2,4 +2,4 @@
 # name: bisect_left
 # key: bisectleft
 # --
-bisect_left(${1:Element}, ${2:list})
+bisect_left(${1:list}, ${2:Element})
