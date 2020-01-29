@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: inputlist
+# key: inputlist
+# --
+${1:name} = []
+for _ in range(${2:n}):
+    $1.append(list(map(int, input().split())))
+    $0
