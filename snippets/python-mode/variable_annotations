@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: variable_annotations
+# key: :
+# --
+${1:Name}: ${2:Type} = ${3:Initialization}

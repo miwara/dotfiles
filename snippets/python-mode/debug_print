@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: debug_print
+# key: dprint
+# --
+print(f"{${1:Variable}=}")

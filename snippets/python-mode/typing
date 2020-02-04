@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: typing
+# key: typing
+# --
+from typing import *
