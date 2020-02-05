@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: print_dp
+# key: printdp
+# --
+for _dp in dp:
+    print(_dp)
