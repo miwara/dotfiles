@@ -2,4 +2,4 @@
 # name: from
 # key: from
 # --
-from ${1:Module} import ${0:Class, ...}
+from ${1:Module} import ${2:Class, ...}
