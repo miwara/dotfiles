@@ -199,4 +199,4 @@ function setTabNameforiTem2() {
 }
 
 # ローカルでの設定
-[ -f ~/.local ] && source ~/.local
+[ -f ~/.zshlocal ] && source ~/.zshlocal
