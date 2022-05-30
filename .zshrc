@@ -127,6 +127,8 @@ alias gsp="git stash pop"
 
 alias gclf="git clean -f"
 
+alias gsw="git switch"
+
 # ls関連
 alias ls="ls --color"
 alias la="ls -al --color"
