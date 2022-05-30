@@ -11,3 +11,4 @@ tags-e
 bin/
 gen/
 .vscode
+.eslintcache
