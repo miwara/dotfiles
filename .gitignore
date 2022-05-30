@@ -10,3 +10,4 @@ tags-e
 .python-version
 bin/
 gen/
+.vscode

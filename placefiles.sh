@@ -44,6 +44,6 @@ do
     fi
 done
 
-git config --global core.exculdesfile $HOME/.gitignore
+git config --global core.excludesfile $HOME/.gitignore
 
 echo "\done!/"

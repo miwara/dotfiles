@@ -6,36 +6,12 @@ export PATH="/usr/local/bin/:$PATH"
 # 文字コードの設定
 export LANG=en_US.UTF-8
 
-# nodeのバージョン管理
-# nodebrew
-nodebrewpath=$HOME/.nodebrew/current/bin
-if [[ -e $nodebrewpath ]]; then
-    export PATH="$nodebrewpath:$PATH"
-fi
+# anyenv
+# **env系関連
+eval "$(anyenv init -)"
 
 # nodist
 NODIST_BIN_DIR__=$(echo "$NODIST_PREFIX" | sed -e 's,\\,/,g')/bin; if [ -f "$NODIST_BIN_DIR__/nodist.sh" ]; then . "$NODIST_BIN_DIR__/nodist.sh"; fi; unset NODIST_BIN_DIR__;
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# rbenv
-# cygwinでchefを使うときに必要
-rbenvpath=$HOME/.rbenv/bin
-if [[ -e $rbenvpath ]]; then
-    export PATH="$rbenvpath:$PATH"
-    eval "$(rbenv init -)"
-fi
-
-# pyenv
-pyenvpath=$HOME/.pyenv
-if [[ -e $pyenvpath ]]; then
-    export PYENV_ROOT="$pyenvpath"
-    export PATH="$pyenvpath/bin:$PATH"
-    eval "$(pyenv init -)"
-fi
 
 # direnv
 if [[ ${OSTYPE} != "cygwin" && ${OSTYPE} != "msys" ]]; then
@@ -225,4 +201,4 @@ function setTabNameforiTem2() {
 }
 
 # ローカルでの設定
-[ -f ~/.local ] && source ~/.local
+[ -f ~/.zshlocal ] && source ~/.zshlocal
