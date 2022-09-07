@@ -208,12 +208,16 @@
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.13280411856248975</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.2389511247683492</real>
 				<key>Red Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.918182373046875</real>
 			</dict>
 			<key>Ansi 10 Color</key>
 			<dict>
@@ -289,12 +293,16 @@
 			</dict>
 			<key>Ansi 4 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.9884033203125</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.35575967205320741</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.22043614089488983</real>
 			</dict>
 			<key>Ansi 5 Color</key>
 			<dict>
@@ -447,6 +455,18 @@
 			</array>
 			<key>Keyboard Map</key>
 			<dict>
+				<key>0x2b-0x60000-0x29</key>
+				<dict>
+					<key>Action</key>
+					<integer>25</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>Make Text Bigger
+Make Text Bigger</string>
+					<key>Version</key>
+					<integer>1</integer>
+				</dict>
 				<key>0x2d-0x40000</key>
 				<dict>
 					<key>Action</key>
@@ -502,6 +522,18 @@
 					<integer>11</integer>
 					<key>Text</key>
 					<string>0x7f</string>
+				</dict>
+				<key>0x3d-0x60000-0x1b</key>
+				<dict>
+					<key>Action</key>
+					<integer>25</integer>
+					<key>Label</key>
+					<string></string>
+					<key>Text</key>
+					<string>Make Text Smaller
+Make Text Smaller</string>
+					<key>Version</key>
+					<integer>1</integer>
 				</dict>
 				<key>0xf700-0x220000</key>
 				<dict>
@@ -1125,5 +1157,9 @@
 	<integer>0</integer>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>kCPKSelectionViewPreferredModeKey</key>
+	<integer>0</integer>
+	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
 </dict>
 </plist>
