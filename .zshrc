@@ -121,6 +121,7 @@ alias gap="git add -p"
 alias grs="git reset --soft"
 alias gth="git reset --hard"
 
+alias gsl="git stash list"
 alias gss="git stash save"
 alias gsp="git stash pop"
 #alias gds="git diff HEAD..stash@{}" aliasではなくて関数でやるべきかも
