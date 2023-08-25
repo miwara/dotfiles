@@ -108,8 +108,6 @@ alias gst="git status"
 alias gl="git log --graph --color --pretty=format:\"%C(cyan)[ %ad]%Creset %C(green)%h%Creset %C(white reverse)%an%Creset : %C(white bold)%w(80)%s%Creset\""
 #alias gl="git log --oneline --graph --color"
 alias gls="git log --graph --color"
-alias gck="git checkout"
-alias gckb="git checkout -b"
 alias gb="git branch -v"
 alias gbd="git branch -D"
 alias gd="git diff --color"
@@ -128,6 +126,7 @@ alias gsp="git stash pop"
 
 alias gclf="git clean -f"
 
+alias gck="git switch"
 alias gsw="git switch"
 
 # ls関連
