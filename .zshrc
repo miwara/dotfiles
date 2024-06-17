@@ -47,6 +47,7 @@ setopt correct			# 間違えて入力したコマンドの修正
 setopt list_packed		# 補完候補を詰めて表示
 setopt extended_glob		# 拡張グロブ
 setopt no_beep			# ビープ音なし
+setopt nonomatch                # ^で「zsh: no matches found:」エラーの対策（\でエスケープできるけど一応指定しておく）
 
 bindkey -e
 
@@ -195,10 +196,15 @@ zle -N do_enter
 bindkey '^m' do_enter
 
 # iTem2 でタブ名を引数の名前に固定する
-function setTabNameforiTem2() {
+# tn <タブ名> でタブ名を変更できる
+alias tn="setTabNameforiTerm2"
+function setTabNameforiTerm2() {
     echo -ne "\e]1;$1\a"
     return 0
 }
+
+# 自前ツールのパス
+export PATH="$HOME/dotfiles/tools:$PATH"
 
 # ローカルでの設定
 [ -f ~/.zshlocal ] && source ~/.zshlocal

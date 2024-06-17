@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+set -e
+set -u
+
+usage_exit() {
+    echo "Usage: $0 [-d dir] target" 1>&2
+    exit 1
+}
+
+DIR="."
+
+while getopts d:h OPT
+do
+    case $OPT in
+        d) DIR="$OPTARG"
+           ;;
+        h) usage_exit
+           ;;
+        \?) usage_exit
+            ;;
+    esac
+done
+
+shift $((OPTIND - 1))
+
+if [ $# -ne 1 ]; then
+    usage_exit
+fi
+
+FILENAME=$1
+
+find $DIR \
+     -path ".git" -prune -o \
+     -type f -name "$FILENAME"
