@@ -30,6 +30,9 @@
   (scroll-bar-mode 0)
 )
 
+;; メニューバーの非表示
+(menu-bar-mode 0)
+
 ;; 対応する括弧を強調表示
 (show-paren-mode t)
 ; 色
