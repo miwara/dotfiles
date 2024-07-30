@@ -3,6 +3,8 @@
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="/usr/local/bin/:$PATH"
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # 文字コードの設定
 export LANG=en_US.UTF-8
 
