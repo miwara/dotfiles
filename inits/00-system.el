@@ -58,3 +58,19 @@
   (interactive "p")
   (kill-line 0))
 (global-set-key (kbd "C-M-k") 'backward-kill-line)
+
+;; フレームの透過を手動で切り替える
+;; M-x toggle-opacity で切り替え
+(defvar is-frame-opacity nil)
+(defun toggle-opacity ()
+  (interactive)
+  (progn
+    (if is-frame-opacity
+	(set-face-background 'default "black")
+      (set-face-background 'default "FF"))
+    (setq is-frame-opacity (not is-frame-opacity)))
+)
+
+;; バックスラッシュを打つ
+;;(define-key global-map [?\M-¥] [?\\])
+(define-key global-map [?¥] [?\\])

@@ -1,20 +1,17 @@
 ;; Emacs common style
 
+
 ;; 画面設定
-(custom-set-faces
-  '(default ((t (:background "#000000" :foreground "#ffffff"))))
-)
+(set-face-foreground 'default "white")
+(set-face-background 'default "black")
+
+;; フレームの透明度
+(set-frame-parameter nil 'alpha-background 75)
 
 ;; region の色設定
 (setq transient-mark-mode t)
 (set-face-foreground 'region' "#7f7f7f")
 (set-face-background 'region' "#5fff87")
-
-;; フレームの透明度
-(set-frame-parameter (selected-frame) 'alpha '(0.75))
-
-;; モードラインに時刻を表示
-(display-time)
 
 (global-hl-line-mode 1)
 (set-face-background 'hl-line "#5f5fff")
