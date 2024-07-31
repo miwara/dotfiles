@@ -1,0 +1,23 @@
+[env]
+TERM = "xterm-256color"
+
+[window]
+opacity = 0.85
+startup_mode = "SimpleFullscreen"
+option_as_alt = "Both"
+
+[colors.primary]
+background = "#2f3b33"
+
+[font]
+size = 11
+offset = { x = 1, y = 1 }
+
+[scrolling]
+history = 100000
+
+# alacrittyからtmuxの自動起動は行わない
+# tmuxは毎回起動させ，自動起動はzshから行うのが正しい
+#[shell]
+#program = "/bin/zsh"
+#args = ["-l", "-c", "tmux a -t || tmux"]
