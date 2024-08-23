@@ -16,8 +16,12 @@ eval "$(anyenv init -)"
 NODIST_BIN_DIR__=$(echo "$NODIST_PREFIX" | sed -e 's,\\,/,g')/bin; if [ -f "$NODIST_BIN_DIR__/nodist.sh" ]; then . "$NODIST_BIN_DIR__/nodist.sh"; fi; unset NODIST_BIN_DIR__;
 
 # direnv
-if [[ ${OSTYPE} != "cygwin" && ${OSTYPE} != "msys" ]]; then
-    eval "$(direnv hook zsh)"
+if [[ -x $(which direnv) ]]; then
+    if [[ ${OSTYPE} != "cygwin" && ${OSTYPE} != "msys" ]]; then
+	eval "$(direnv hook zsh)"
+    fi
+else
+    echo "[.zshrc]: direnv is not installed."
 fi
 
 # coreutils
@@ -143,6 +147,7 @@ alias grep="grep -n --color=auto "
 if [[ -x $(which colordiff) ]]; then
     alias diff="colordiff -u"
 else
+    echo "[.zshrc]: colordiff not installed. insted use diff."
     alias diff="diff -u"
 fi
 
