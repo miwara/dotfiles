@@ -12,3 +12,5 @@ tags-e
 bin/
 gen/
 .eslintcache
+.envrc
+mise.toml

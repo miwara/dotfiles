@@ -13,3 +13,4 @@ bin/
 gen/
 .eslintcache
 .envrc
+mise.toml
