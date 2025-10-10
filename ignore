@@ -14,3 +14,4 @@ gen/
 .eslintcache
 .envrc
 mise.toml
+.claude
