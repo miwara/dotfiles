@@ -1,18 +1,36 @@
 interface ConfFiles {
   name: string;
-  placeDir: string;
+  placeDir: string; // 配置場所
+  src?: string; // 配置元のファイルパス。省略された場合はnameと同じとみなす
 }
 
 const HOME = Deno.env.get("HOME");
 
 const confFiles: ConfFiles[] = [
-  { name: "init.el", placeDir: `${HOME}/.emacs.d/` },
-  { name: "custom.el", placeDir: `${HOME}/.emacs.d/` },
-  { name: "snippets", placeDir: `${HOME}/.emacs.d/` },
+  { name: "init.el", placeDir: `${HOME}/.emacs.d/`, src: "emacs/init.el" },
+  { name: "custom.el", placeDir: `${HOME}/.emacs.d/`, src: "emacs/custom.el" },
+  { name: "snippets", placeDir: `${HOME}/.emacs.d/`, src: "emacs/snippets" },
   { name: ".zshrc", placeDir: `${HOME}/` },
-  { name: "ignore", placeDir: `${HOME}/.config/git/` },
-  { name: "alacritty.toml", placeDir: `${HOME}/.config/alacritty/` },
-  { name: "tmux.conf", placeDir: `${HOME}/.config/tmux/` },
+  {
+    name: "ignore",
+    placeDir: `${HOME}/.config/git/`,
+    src: ".config/git/ignore",
+  },
+  {
+    name: "alacritty.toml",
+    placeDir: `${HOME}/.config/alacritty/`,
+    src: ".config/alacritty/alacritty.toml",
+  },
+  {
+    name: "tmux.conf",
+    placeDir: `${HOME}/.config/tmux/`,
+    src: ".config/tmux/tmux.conf",
+  },
+  {
+    name: "config",
+    placeDir: `${HOME}/.config/ghostty/`,
+    src: ".config/ghostty/config",
+  },
 ];
 
 const makePlaceDir = async (placeDir: string) => {
@@ -21,9 +39,9 @@ const makePlaceDir = async (placeDir: string) => {
   });
 };
 
-const makeSymlink = async ({ name, placeDir }: ConfFiles) => {
+const makeSymlink = async ({ name, placeDir, src }: ConfFiles) => {
   await Deno.lstat(placeDir + name).catch(async () => {
-    await Deno.symlink(`${Deno.cwd()}/${name}`, placeDir + name);
+    await Deno.symlink(`${Deno.cwd()}/${src ?? name}`, placeDir + name);
   });
 };
 

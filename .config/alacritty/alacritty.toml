@@ -27,3 +27,13 @@ history = 100000
 key = "Return"
 mods = "Shift"
 chars = "\n"
+
+[[keyboard.bindings]]
+key = "Up"
+mods = "Control|Shift"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Down"
+mods = "Control|Shift"
+action = "DecreaseFontSize"

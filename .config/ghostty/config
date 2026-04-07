@@ -1,0 +1,38 @@
+# ghosttyのシェル統合機能の個別機能を無効
+# !不都合があったらここを変える!
+shell-integration-features = false
+
+term = xterm-256color
+
+# フルスクリーン関連
+# macos only
+fullscreen = non-native
+macos-non-native-fullscreen = padded-notch
+
+background = #2f3b33
+background-opacity = 0.85
+# 裏画面を見ながらコマンドを打ちたいのでblurはしない
+# background-blur = false
+
+# x軸方向　カンマ区切りで「右,左」の設定できる
+window-padding-x = 10
+# y軸方向　カンマ区切りで「上,下」の設定できる
+window-padding-y = 30,5
+
+cursor-style = block
+
+# 11pt に設定(2px/pt)
+font-size = 10
+
+# 1 GiB = 1073741824 B
+# 500 MiB = 524312500 B
+scrollback-limit = 1073741824
+scrollbar = never
+
+# shift+enterで改行を入れられるようにする
+keybind = shift+enter=text:\n
+
+# ctrl+shift+upで文字サイズを大きく
+# ctrl+shift+downで文字サイズを小さく
+keybind = ctrl+shift+up=increase_font_size:1.5
+keybind = ctrl+shift+down=decrease_font_size:1.5

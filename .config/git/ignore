@@ -15,3 +15,10 @@ gen/
 .envrc
 mise.toml
 .claude
+.gemini
+
+# playwright-cli
+.playwright
+.playwright-cli
+
+**/.claude/settings.local.json
