@@ -37,6 +37,12 @@ const confFiles: ConfFiles[] = [
     placeDir: `${HOME}/.config/ghostty/`,
     src: ".config/ghostty/config",
   },
+  // starship
+  {
+    name: "starship.toml",
+    placeDir: `${HOME}/.config/`,
+    src: ".config/starship/starship.toml",
+  },
   // CLAUDE
   { name: "CLAUDE.md", placeDir: `${HOME}/.claude/`, src: ".claude/CLAUDE.md" },
   {

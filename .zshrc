@@ -8,12 +8,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # 文字コードの設定
 export LANG=en_US.UTF-8
 
-# anyenv
-# **env系関連
-#eval "$(anyenv init -)"
+# starship
+eval "$(starship init zsh)"
 
 # mise
-# anyenvからmiseに移行
 eval "$(mise activate zsh)"
 
 # nodist
@@ -43,8 +41,9 @@ compinit -u
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-autoload colors
-colors
+
+# 通常の補完（Tab）と違い，タイプしながらリアルタイムで履歴から予測候補を薄いテキストで表示
+# 入力途中の履歴補完を有効にしているので不要
 #autoload predict-on
 #predict-on
 
@@ -55,54 +54,119 @@ setopt auto_cd			# cd の省略
 setopt auto_pushd		# 移動したディレクトリを記録
 setopt correct			# 間違えて入力したコマンドの修正
 setopt list_packed		# 補完候補を詰めて表示
-setopt extended_glob		# 拡張グロブ
 setopt no_beep			# ビープ音なし
-setopt nonomatch                # ^で「zsh: no matches found:」エラーの対策（\でエスケープできるけど一応指定しておく）
+setopt extended_glob	# 拡張グロブ
+setopt nonomatch        # ^で「zsh: no matches found:」エラーの対策（\でエスケープできるけど一応指定しておく）
 
 bindkey -e
 
+# プロンプト設定
+
+# プロンプトで色変数を使えるようにする
+autoload colors
+colors
+
+# コマンドを間違えたときのプロンプト
+# correctオプションを有効にしている
+SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
+
+# starshipでプロンプトを設定するようにしたのでコメントアウト　ここから
 #
 # ブランチを間違えないために
 #
 # VCSの情報を取得
-autoload -Uz vcs_info
+#autoload -Uz vcs_info
 
 # 表示フォーマットの指定
 # %b ブランチ情報
 # %a アクション名（mergeなど）
-zstyle ':vcs_info:*' formats '[%b]'
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
+#zstyle ':vcs_info:*' formats '[%b]'
+#zstyle ':vcs_info:*' actionformats '[%b|%a]'
+#precmd () {
+#    psvar=()
+#    LANG=en_US.UTF-8 vcs_info
+#    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+#}
 
-# プロンプト設定
+# プロンプトの設定
 # ユーザ毎に使い分け
-case ${USERNAME} in
-    'root')
- 	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
- 	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
- 	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
- 	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
- 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
- 	;;
-    'vagrant')
-	PROMPT="%U%F{white}%K{green}%B%m:%n%#%b%k%f%u "
- 	PROMPT2="%F{white}%K{green}%B%m:%n%#%b%k%f "
-	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
-	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
-	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
-	;;
-    *)
-	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
-	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
-	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
-	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
-	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
- 	;;
-esac
+#case ${USERNAME} in
+#    'root')
+# 	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
+# 	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
+# 	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
+# 	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
+# 	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+# 	;;
+#    'vagrant')
+#	PROMPT="%U%F{white}%K{green}%B%m:%n%#%b%k%f%u "
+# 	PROMPT2="%F{white}%K{green}%B%m:%n%#%b%k%f "
+#	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
+#	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
+#	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+#	;;
+#    *)
+#	PROMPT="%U%F{blue}%K{white}%B%m:%n%#%b%k%f%u "
+#	PROMPT2="%F{blue}%K{white}%B%m:%n%#%b%k%f "
+#	RPROMPT="%1(vl%F{cyan}%1v%fl) %F{white}[%~]%f"
+#	SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
+#	[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
+# 	;;
+#esac
+# starshipでプロンプトを設定するようにしたのでコメントアウト　ここまで
+
+# コマンド履歴関連
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt hist_ignore_dups		# ignore duplioation command history list
+setopt share_history		# share command history data
+
+setopt hist_expand
+
+# 入力途中の履歴補完
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+# インクリメントサーチの設定
+# bindkey "^R" history-incremental-search-backward
+# bindkey "^S" history-incremental-search-forward
+
+# 履歴のインクリメントサーチでワイルドカード利用可能
+bindkey "^R" history-incremental-pattern-search-backward
+bindkey "^S" history-incremental-pattern-search-forward
+
+# Enterで ls と git status
+function do_enter() {
+    if [  -n "$BUFFER" ]; then
+        zle accept-line
+        return 0
+    fi
+    echo
+    ls
+   # ls_abbrev
+   if [  "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+       echo
+       echo -e "\e[ 0;33m--- git status ---\e[ 0m"
+       git status -sb
+   fi
+   zle reset-prompt
+   return 0
+}
+zle -N do_enter
+bindkey '^m' do_enter
+
+# iTem2 でタブ名を引数の名前に固定する
+# tn <タブ名> でタブ名を変更できる
+# iterm2使わなくなったのでコメントアウト
+#alias tn="setTabNameforiTerm2"
+#function setTabNameforiTerm2() {
+#    echo -ne "\e]1;$1\a"
+#    return 0
+#}
 
 # alias
 # 設定ファイルの編集
@@ -161,58 +225,6 @@ alias javac="javac -J-Dfile.encoding=UTF-8"
 
 # composer関連
 alias composer="php /usr/local/bin/composer"
-
-# コマンド履歴関連
-HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
-setopt hist_ignore_dups		# ignore duplioation command history list
-setopt share_history		# share command history data
-
-setopt hist_expand
-
-# 入力途中の履歴補完
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
-
-# インクリメントサーチの設定
-# bindkey "^R" history-incremental-search-backward
-# bindkey "^S" history-incremental-search-forward
-
-# 履歴のインクリメントサーチでワイルドカード利用可能
-bindkey "^R" history-incremental-pattern-search-backward
-bindkey "^S" history-incremental-pattern-search-forward
-
-# Enterで ls と git status
-function do_enter() {
-    if [  -n "$BUFFER" ]; then
-        zle accept-line
-        return 0
-    fi
-    echo
-    ls
-   # ls_abbrev
-   if [  "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-       echo
-       echo -e "\e[ 0;33m--- git status ---\e[ 0m"
-       git status -sb
-   fi
-   zle reset-prompt
-   return 0
-}
-zle -N do_enter
-bindkey '^m' do_enter
-
-# iTem2 でタブ名を引数の名前に固定する
-# tn <タブ名> でタブ名を変更できる
-alias tn="setTabNameforiTerm2"
-function setTabNameforiTerm2() {
-    echo -ne "\e]1;$1\a"
-    return 0
-}
 
 # 自前ツールのパス
 export PATH="$HOME/dotfiles/tools:$PATH"
