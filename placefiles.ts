@@ -70,9 +70,22 @@ const makePlaceDir = async (placeDir: string) => {
 };
 
 const makeSymlink = async ({ name, placeDir, src }: ConfFiles) => {
-  await Deno.lstat(placeDir + name).catch(async () => {
-    await Deno.symlink(`${Deno.cwd()}/${src ?? name}`, placeDir + name);
-  });
+  const target = placeDir + name;
+  const linkSrc = `${Deno.cwd()}/${src ?? name}`;
+
+  try {
+    const stat = await Deno.lstat(target);
+    if (stat.isSymlink) {
+      await Deno.remove(target);
+    } else {
+      console.warn(`Skipped (not a symlink): ${target}`);
+      return;
+    }
+  } catch {
+    // 存在しない → そのまま作成
+  }
+
+  await Deno.symlink(linkSrc, target);
 };
 
 const placeFile = async (confFiles: ConfFiles[]) => {
