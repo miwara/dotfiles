@@ -8,9 +8,14 @@ const HOME = Deno.env.get("HOME");
 
 const confFiles: ConfFiles[] = [
   // emacs
-  { name: "init.el", placeDir: `${HOME}/.emacs.d/`, src: "emacs/init.el" },
-  { name: "custom.el", placeDir: `${HOME}/.emacs.d/`, src: "emacs/custom.el" },
-  { name: "snippets", placeDir: `${HOME}/.emacs.d/`, src: "emacs/snippets" },
+  { name: "init.el", placeDir: `${HOME}/.emacs.d/`, src: ".emacs.d/init.el" },
+  {
+    name: "custom.el",
+    placeDir: `${HOME}/.emacs.d/`,
+    src: ".emacs.d/custom.el",
+  },
+  { name: "snippets", placeDir: `${HOME}/.emacs.d/`, src: ".emacs.d/snippets" },
+  { name: "inits", placeDir: `${HOME}/.emacs.d/`, src: ".emacs.d/inits" },
   // zsh
   { name: ".zshrc", placeDir: `${HOME}/` },
   // git

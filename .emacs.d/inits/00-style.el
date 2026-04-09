@@ -75,6 +75,6 @@
 
 ;; 環境によって設定を切り替え
 (if (eq system-type 'cygwin)
-    (load "~/dotfiles/inits/windowsstyle.el")
-  (load "~/dotfiles/inits/linuxstyle.el")
+    (load (expand-file-name "inits/windowsstyle.el" user-emacs-directory))
+  (load (expand-file-name "inits/linuxstyle.el" user-emacs-directory))
   )

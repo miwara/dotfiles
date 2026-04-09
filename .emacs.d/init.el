@@ -19,9 +19,9 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(load "~/dotfiles/inits/00-style.el")
-
-(load "~/dotfiles/inits/00-system.el")
+;; user-emacs-directory (~/.emacs.d/) を起点にする
+(load (expand-file-name "inits/00-style.el" user-emacs-directory))
+(load (expand-file-name "inits/00-system.el" user-emacs-directory))
 
 ;; -----------------------------------------------------------------------------
 
