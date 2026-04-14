@@ -2,6 +2,7 @@
 ;; https://github.com/emacsmirror/multiple-cursors
 
 (use-package multiple-cursors
+  :ensure t
   :defer t
 
   :bind (("C-^" . mc/edit-lines)

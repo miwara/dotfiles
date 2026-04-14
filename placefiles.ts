@@ -8,14 +8,7 @@ const HOME = Deno.env.get("HOME");
 
 const confFiles: ConfFiles[] = [
   // emacs
-  { name: "init.el", placeDir: `${HOME}/.emacs.d/`, src: ".emacs.d/init.el" },
-  {
-    name: "custom.el",
-    placeDir: `${HOME}/.emacs.d/`,
-    src: ".emacs.d/custom.el",
-  },
-  { name: "snippets", placeDir: `${HOME}/.emacs.d/`, src: ".emacs.d/snippets" },
-  { name: "inits", placeDir: `${HOME}/.emacs.d/`, src: ".emacs.d/inits" },
+  { name: ".emacs.d", placeDir: `${HOME}/` },
   // zsh
   { name: ".zshrc", placeDir: `${HOME}/` },
   // git
@@ -26,6 +19,7 @@ const confFiles: ConfFiles[] = [
   },
   // vim
   { name: ".vimrc", placeDir: `${HOME}/` },
+  { name: ".vim", placeDir: `${HOME}/` },
   // alacritty
   {
     name: "alacritty.toml",
@@ -87,7 +81,11 @@ const makeSymlink = async ({ name, placeDir, src }: ConfFiles) => {
     // 存在しない → そのまま作成
   }
 
-  await Deno.symlink(linkSrc, target);
+  try {
+    await Deno.symlink(linkSrc, target);
+  } catch (e) {
+    console.error(`Failed to create symlink: ${target} -> ${linkSrc}: ${e}`);
+  }
 };
 
 const placeFile = async (confFiles: ConfFiles[]) => {

@@ -19,67 +19,61 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;; user-emacs-directory (~/.emacs.d/) を起点にする
-(load (expand-file-name "inits/00-style.el" user-emacs-directory))
-(load (expand-file-name "inits/00-system.el" user-emacs-directory))
-
+;; -----------------------------------------------------------------------------
+;; conf-loader: 自律的・堅牢な設定ロード機能
+;; 仕様: docs/conf-loader.md
 ;; -----------------------------------------------------------------------------
 
-;; Eshell
-(add-hook 'eshell-mode-hook (lambda ()
-			      (define-key eshell-mode-map "\C-a" 'eshell-bol)
-			      (setq eshell-scroll-show-maximum-output t)
-			      (setq eshell-scroll-to-bottom-on-output nil)
-			      (setq eshell-save-history-on-exit nil)
-			      (setq eshell-cmpl-ignore-case t)
-			      ))
+(defvar conf-loader-dry-run nil "非 nil の場合，実際のロードを行わず順序を表示するのみとする．")
+(defvar conf-loader-known-os-names '("darwin" "gnu-linux" "windows-nt")
+  "conf-loader が認識する OS 名のリスト．ファイル名がこのリストに含まれ，かつ現在の OS と一致しない場合はスキップする．")
 
-;; F6で起動
-(global-set-key [f6] 'eshell)
+(defun conf-loader-run (dir)
+  "指定されたディレクトリ DIR 内の .el ファイルを安全にロードする．"
+  (let* ((inits-dir (expand-file-name dir user-emacs-directory))
+         (files (when (file-directory-p inits-dir)
+                  (directory-files inits-dir t "\\.el$")))
+         (os-name (replace-regexp-in-string "/" "-" (symbol-name system-type)))
+         (os-file (expand-file-name (format "%s.el" os-name) inits-dir)))
+    
+    (message "--- Starting conf-loader: %s ---" inits-dir)
+    (unless files
+      (message "[Warning] No files found in %s" inits-dir))
+    
+    ;; 1. 通常の設定ファイルをソートしてロード
+    (dolist (file (sort files 'string<))
+      (let ((fname (file-name-nondirectory file)))
+        ;; 除外ルール: _ で始まる，または OS 名と一致する，または隠し/一時ファイル
+        (let ((name (file-name-sans-extension fname)))
+          (unless (or (string-prefix-p "_" fname)
+                      (string-prefix-p "." fname)
+                      (string-prefix-p "#" fname)
+                      (string-suffix-p "~" fname)
+                      (string-equal file os-file)
+                      (and (member name conf-loader-known-os-names)
+                           (not (string-equal name os-name))))
+            (conf-loader-load-file file)))))
 
-;; eshell clear
-(defun eshell/clear ()
-  "Clear the current buffer, leaving one prompt at the top."
-  (interactive)
-  (let (inhibit-read-only t)
-    (erase-buffer)))
+    ;; 2. OS 固有の設定ファイルがあれば最後にロード（上書き用）
+    (when (file-exists-p os-file)
+      (message "Loading OS-specific config: %s" os-file)
+      (conf-loader-load-file os-file))
+    
+    (message "--- Finished conf-loader: %s ---" inits-dir)))
 
+(defun conf-loader-load-file (file)
+  "エラー保護付きで単一ファイルをロードする．"
+  (if conf-loader-dry-run
+      (message "[Dry-run] Would load: %s" (file-name-nondirectory file))
+    (condition-case err
+        (progn
+          (message "Loading: %s" (file-name-nondirectory file))
+          (load file))
+      (error (message "[Error] Failed to load %s: %s" 
+                      (file-name-nondirectory file) 
+                      (error-message-string err))))))
 
-;; yasnippet
-;; https://github.com/capitaomorte/yasnippet
-(use-package yasnippet
-  :ensure t
-  :init
-  (yas-global-mode t)
+;; 設定ディレクトリのロード実行
+(conf-loader-run "inits/")
 
-  ;; 自作スニペットの保存先
-  (setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"))
-
-  :bind (:map yas-minor-mode-map
-	 ;; 既存スニペットを挿入する
-	 ("C-x i i" . yas-insert-snippet)
-	 ;; 新規スニペットを作成するバッファを用意する
-	 ("C-x i n" . yas-new-snippet)
-	 ;; 既存スニペットを閲覧・編集する
-	 ("C-x i v" . yas-visit-snippet-file)
-	)
-  )
-
-
-;; multiple-cursors
-;; https://github.com/emacsmirror/multiple-cursors
-(use-package multiple-cursors
-  :ensure t
-  :defer t
-
-  :bind (("C-^" . mc/edit-lines)
-	 ("C-M-a" . mc/mark-all-like-this)
-	 ;; windows用のkey-bind
-	 ("M-[ 1 ; 6 n" . mc/mark-next-like-this)     ;; "C->" にしたかったがこれでないと動かなかった
-	 ("M-[ 1 ; 6 l" . mc/mark-previous-like-this) ;; "C-<" にしたかったがこれでないと動かなかった
-	 ;; mac用のkey-bind
-	 ("M-." . mc/mark-next-like-this)
-	 ("M-," . mc/mark-previous-like-this)
-  )
-)
+;; -----------------------------------------------------------------------------

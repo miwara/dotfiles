@@ -15,3 +15,8 @@ gen/
 .envrc
 mise.toml
 .claude/
+
+# Editor plugins & auto-generated files
+.emacs.d/elpa/
+.vim/autoload/plug.vim
+.vim/plugged/

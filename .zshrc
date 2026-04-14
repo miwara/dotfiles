@@ -177,6 +177,9 @@ alias x="source ~/.zshrc"
 # emacs関連
 alias e="emacs"
 
+# vim関連
+alias v="vim"
+
 # git関連
 alias push="git push"
 alias pull="git pull"
