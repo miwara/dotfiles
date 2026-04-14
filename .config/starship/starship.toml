@@ -18,21 +18,40 @@ $nodejs\
 $rust\
 $golang\
 $php\
+$deno\
+$bun\
+$c\
+$cpp\
+$cmake\
 [ ](fg:#212736)\
 $status\
 \n$character"""
 
 [status]
 disabled = false
-style = "bg:#a082a0 fg:#1d2230 bold"
-symbol = "\\(╯°□°\\)╯︵ ┻━┻"
-format = "[ ](fg:#a082a0)[ $symbol ]($style)[ ](fg:#a082a0)"
+map_symbol = true
+
+# コマンドエラーのとき
+symbol = '\(╯°□°\)╯︵ ┻━┻'
+
+# crtl+c をしてコマンド実行をキャンセルしたとき
+sigint_symbol = ''
+
+# コマンドが見つからないとき
+not_found_symbol = '_\(:3」∠\)_'
+
+# ファイルが実行可能ファイルでないとき
+not_executable_symbol = 'ʕ•̫͡•ʕ•̫͡•ʔ•̫͡•ʔ•̫͡•ʕ•̫͡•ʔ•̫͡•ʕ•̫͡•ʕ•̫͡•ʔ•̫͡•ʔ•̫͡•ʕ•̫͡•ʔ•̫͡•ʔ'
+
+style = "fg:#c099c0 bold"
+format = "[ $symbol ]($style)"
 
 [directory]
 style = "fg:#e3e5e5 bg:#769ff0"
 format = "[ $path ]($style)"
 truncation_length = 5
 truncation_symbol = "…/"
+truncate_to_repo = false
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -66,6 +85,32 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [php]
 symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[deno]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[bun]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[c]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($name $version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[cpp]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($name $version) ](fg:#769ff0 bg:#212736)]($style)'
+disabled = false
+
+[cmake]
+symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 

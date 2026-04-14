@@ -7,7 +7,14 @@ term = xterm-256color
 # フルスクリーン関連
 # macos only
 fullscreen = non-native
-macos-non-native-fullscreen = padded-notch
+# fullscreenの設定が優先される
+#macos-non-native-fullscreen = true
+maximize = true
+macos-titlebar-style = tabs
+
+# macos only
+# altの特殊文字入力を無効
+macos-option-as-alt = true
 
 background = #2f3b33
 background-opacity = 0.85
@@ -34,5 +41,5 @@ keybind = shift+enter=text:\n
 
 # ctrl+shift+upで文字サイズを大きく
 # ctrl+shift+downで文字サイズを小さく
-keybind = ctrl+shift+up=increase_font_size:1.5
-keybind = ctrl+shift+down=decrease_font_size:1.5
+keybind = ctrl+shift+up=increase_font_size:0.5
+keybind = ctrl+shift+down=decrease_font_size:0.5

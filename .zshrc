@@ -56,7 +56,7 @@ setopt correct			# 間違えて入力したコマンドの修正
 setopt list_packed		# 補完候補を詰めて表示
 setopt no_beep			# ビープ音なし
 setopt extended_glob	# 拡張グロブ
-setopt nonomatch        # ^で「zsh: no matches found:」エラーの対策（\でエスケープできるけど一応指定しておく）
+setopt nonomatch		# ^で「zsh: no matches found:」エラーの対策（\でエスケープできるけど一応指定しておく）
 
 bindkey -e
 
@@ -125,11 +125,12 @@ setopt share_history		# share command history data
 setopt hist_expand
 
 # 入力途中の履歴補完
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^N" history-beginning-search-forward-end
+# 複数行入力中はカーソル移動，単一行ではヒストリ検索
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^P" up-line-or-beginning-search
+bindkey "^N" down-line-or-beginning-search
 
 # インクリメントサーチの設定
 # bindkey "^R" history-incremental-search-backward

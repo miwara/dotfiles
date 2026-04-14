@@ -24,6 +24,8 @@ const confFiles: ConfFiles[] = [
     placeDir: `${HOME}/.config/git/`,
     src: ".config/git/ignore",
   },
+  // vim
+  { name: ".vimrc", placeDir: `${HOME}/` },
   // alacritty
   {
     name: "alacritty.toml",
@@ -36,7 +38,7 @@ const confFiles: ConfFiles[] = [
     placeDir: `${HOME}/.config/tmux/`,
     src: ".config/tmux/tmux.conf",
   },
-  // ghostty (こっちをメインに使っている)
+  // ghostty (ターミナルはこっちをメインに使っている)
   {
     name: "config",
     placeDir: `${HOME}/.config/ghostty/`,
