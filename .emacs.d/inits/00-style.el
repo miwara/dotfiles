@@ -42,39 +42,26 @@
 (set-face-background 'show-paren-mismatch "#d70000")
 
 ;; 行末の空白を強調表示
-(require 'whitespace)
-(setq whitespace-style '(face
-                         trailing
-                         tabs
-                         spaces
-                         empty
-                         space-mark
-                         ))
-; 全角スペースは□ (U+25A1)をで表示する
-; タブのシンボルは設定しない（コピペが面倒になる）
-(setq whitespace-display-mappings
-      '((space-mark ?\u3000 [?\u25a1])))
-; 可視化は全角スペースのみ
-(setq whitespace-space-regexp "\\(\u3000+\\)")
+(use-package whitespace
+  :ensure nil
+  :diminish
+  :custom
+  (whitespace-style '(face trailing tabs spaces empty space-mark))
+  ;; 全角スペースは□ (U+25A1)をで表示する
+  ;; タブのシンボルは設定しない（コピペが面倒になる）
+  (whitespace-display-mappings '((space-mark ?\u3000 [?\u25a1])))
+  ;; 可視化は全角スペースのみ
+  (whitespace-space-regexp "\\(\u3000+\\)")
+  :init
+  (global-whitespace-mode 1))
 
-(global-whitespace-mode 1)
-; スペースの色設定
-(set-face-attribute 'whitespace-trailing nil
-                    :background "#ff00ff")
-(set-face-attribute 'whitespace-tab nil
-                    :background "#5c5cff")
-(set-face-attribute 'whitespace-space nil
-                    :foreground "#00ff00"
-                    :weight 'bold)
-(set-face-attribute 'whitespace-empty nil
-                    :background "#00ffff")
+;; スペースの色設定
+(set-face-attribute 'whitespace-trailing nil :background "#ff00ff")
+(set-face-attribute 'whitespace-tab nil :background "#5c5cff")
+(set-face-attribute 'whitespace-space nil :foreground "#00ff00" :weight 'bold)
+(set-face-attribute 'whitespace-empty nil :background "#00ffff")
 
 ;; タイトルバーにファイルのフルパス表示
 (setq frame-title-format
       (format "%%f - Emacs@%s" (system-name)))
 
-;; 環境によって設定を切り替え
-(if (eq system-type 'cygwin)
-    (load (expand-file-name "inits/windowsstyle.el" user-emacs-directory))
-  (load (expand-file-name "inits/linuxstyle.el" user-emacs-directory))
-  )

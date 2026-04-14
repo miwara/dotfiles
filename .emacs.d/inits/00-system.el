@@ -31,8 +31,10 @@
 ;; ファイル内カーソル位置を記憶
 (setq-default save-place-mode t)
 
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(use-package uniquify
+  :ensure nil
+  :custom
+  (uniquify-buffer-name-style 'post-forward-angle-brackets))
 
 ;; C-h をBackspaceにする
 (global-set-key "\C-h" 'delete-backward-char)
