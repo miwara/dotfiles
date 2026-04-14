@@ -5,12 +5,21 @@ shell-integration-features = false
 term = xterm-256color
 
 # フルスクリーン関連
-# macos only
-fullscreen = non-native
+#
+# 全画面に引き伸ばした表示をしてほしいのに以下の場合だとwindowの大きさが変更される
+# - ghosttyを全画面表示をしている状態で，他のアプリを起動すると
+#   他のアプリのメニュー分ghosttyのwindowの高さが縮む
+# - pcスリープから起動すると稀に全画面が解除されている
+#
+# 一旦メニューを表示しておく
+# `window-padding-y`も一旦上方向のpaddingはしない
+#fullscreen = non-native
+fullscreen = non-native-visible-menu
+
 # fullscreenの設定が優先される
 #macos-non-native-fullscreen = true
-maximize = true
-macos-titlebar-style = tabs
+#maximize = true
+#macos-titlebar-style = tabs
 
 # macos only
 # altの特殊文字入力を無効
@@ -24,7 +33,10 @@ background-opacity = 0.85
 # x軸方向　カンマ区切りで「右,左」の設定できる
 window-padding-x = 10
 # y軸方向　カンマ区切りで「上,下」の設定できる
-window-padding-y = 30,5
+# fullscreenが思ったように動かないので上方向のpaddingはしない
+#window-padding-y = 30,5
+window-padding-y = 5
+
 
 cursor-style = block
 

@@ -15,7 +15,7 @@
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
-  (load custom-file))
+  (load custom-file nil t))
 
 ;; -----------------------------------------------------------------------------
 ;; conf-loader: 自律的・堅牢な設定ロード機能
@@ -34,7 +34,8 @@
          (os-name (replace-regexp-in-string "/" "-" (symbol-name system-type)))
          (os-file (expand-file-name (format "%s.el" os-name) inits-dir)))
     
-    (message "--- Starting conf-loader: %s ---" inits-dir)
+    (when conf-loader-dry-run
+      (message "--- Starting conf-loader: %s ---" inits-dir))
     (unless files
       (message "[Warning] No files found in %s" inits-dir))
     
@@ -54,21 +55,21 @@
 
     ;; 2. OS 固有の設定ファイルがあれば最後にロード（上書き用）
     (when (file-exists-p os-file)
-      (message "Loading OS-specific config: %s" os-file)
+      (when conf-loader-dry-run
+        (message "Loading OS-specific config: %s" os-file))
       (conf-loader-load-file os-file))
-    
-    (message "--- Finished conf-loader: %s ---" inits-dir)))
+
+    (when conf-loader-dry-run
+      (message "--- Finished conf-loader: %s ---" inits-dir))))
 
 (defun conf-loader-load-file (file)
   "エラー保護付きで単一ファイルをロードする．"
   (if conf-loader-dry-run
-      (message "[Dry-run] Would load: %s" (file-name-nondirectory file))
+      (message "Loading: %s" (file-name-nondirectory file))
     (condition-case err
-        (progn
-          (message "Loading: %s" (file-name-nondirectory file))
-          (load file))
-      (error (message "[Error] Failed to load %s: %s" 
-                      (file-name-nondirectory file) 
+        (load file nil t)
+      (error (message "[Error] Failed to load %s: %s"
+                      (file-name-nondirectory file)
                       (error-message-string err))))))
 
 ;; 設定ディレクトリのロード実行
