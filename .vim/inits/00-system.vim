@@ -13,6 +13,7 @@ augroup checktime
   autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * checktime
 augroup END
 
+set re=0
 set tags=./tags,tags
 
 " --- Key Bindings ---
