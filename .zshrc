@@ -1,46 +1,51 @@
-# Created by newuser for 5.0.2
-
-export PATH="$HOME/.composer/vendor/bin:$PATH"
-export PATH="/usr/local/bin/:$PATH"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # 文字コードの設定
 export LANG=en_US.UTF-8
 
-# starship
-eval "$(starship init zsh)"
+typeset -U path
+path=(
+    /usr/local/bin
+    $HOME/.local/bin
+    $HOME/.cargo/bin
+    $HOME/dotfiles/tools # 自前ツールのパス
+    $path
+)
 
-# mise
-eval "$(mise activate zsh)"
-
-# nodist
-NODIST_BIN_DIR__=$(echo "$NODIST_PREFIX" | sed -e 's,\\,/,g')/bin; if [ -f "$NODIST_BIN_DIR__/nodist.sh" ]; then . "$NODIST_BIN_DIR__/nodist.sh"; fi; unset NODIST_BIN_DIR__;
-
-# direnv
-if [[ -x $(which direnv) ]]; then
-    if [[ ${OSTYPE} != "cygwin" && ${OSTYPE} != "msys" ]]; then
-	eval "$(direnv hook zsh)"
-    fi
-else
-    echo "[.zshrc]: direnv is not installed."
-fi
-
-# coreutils
 case ${OSTYPE} in
     darwin*)
-	export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-	# findutiles
-	alias find=gfind
-	alias xargs=gxargs
+
+    path=(
+        "$(brew --prefix coreutils)/libexec/gnubin" # coreutils
+        "$(brew --prefix findutils)/libexec/gnubin" # findutils
+        "$(brew --prefix llvm)/bin" # llvm
+        "$(brew --prefix lld)/bin" # lld
+        $path
+    )
 	;;
 esac
 
+export PATH
+
+# starship
+(( $+commands[starship] )) && eval "$(starship init zsh)"
+
+# mise
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
+
+# direnv
+(( $+commands[direnv] )) && eval "$(direnv hook zsh)"
+
+## gdircolors for LS_COLORS
+(( $+commands[gdircolors] )) && eval "$(gdircolors)"
+
+# 補完の置き場所
+fpath=($HOME/.config/zsh/completions $fpath)
+
 autoload -Uz compinit
-compinit -u
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:default' menu select=1
+compinit
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 
 # 通常の補完（Tab）と違い，タイプしながらリアルタイムで履歴から予測候補を薄いテキストで表示
 # 入力途中の履歴補完を有効にしているので不要
@@ -57,20 +62,21 @@ setopt list_packed		# 補完候補を詰めて表示
 setopt no_beep			# ビープ音なし
 setopt extended_glob	# 拡張グロブ
 setopt nonomatch		# ^で「zsh: no matches found:」エラーの対策（\でエスケープできるけど一応指定しておく）
+setopt prompt_subst     # プロンプト展開を有効にする
 
 bindkey -e
 
 # プロンプト設定
 
-# プロンプトで色変数を使えるようにする
-autoload colors
-colors
-
 # コマンドを間違えたときのプロンプト
 # correctオプションを有効にしている
-SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} "
+SPROMPT="%F{red}%r is correct? (｡ŏ﹏ŏ) [n,y,a,e]:%f "
 
 # starshipでプロンプトを設定するようにしたのでコメントアウト　ここから
+# プロンプトで色変数を使えるようにする
+#autoload colors
+#colors
+
 #
 # ブランチを間違えないために
 #
@@ -116,12 +122,11 @@ SPROMPT="%{${fg[red]}%}%r is correct?(｡ŏ﹏ŏ) [n,y,a,e]:% {${reset_color}%} 
 # starshipでプロンプトを設定するようにしたのでコメントアウト　ここまで
 
 # コマンド履歴関連
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
-setopt hist_ignore_dups		# ignore duplioation command history list
-setopt share_history		# share command history data
-
+setopt hist_ignore_all_dups # ignore duplioation command history list
+setopt share_history        # share command history data
 setopt hist_expand
 
 # 入力途中の履歴補完
@@ -160,19 +165,10 @@ function do_enter() {
 zle -N do_enter
 bindkey '^m' do_enter
 
-# iTem2 でタブ名を引数の名前に固定する
-# tn <タブ名> でタブ名を変更できる
-# iterm2使わなくなったのでコメントアウト
-#alias tn="setTabNameforiTerm2"
-#function setTabNameforiTerm2() {
-#    echo -ne "\e]1;$1\a"
-#    return 0
-#}
-
 # alias
 # 設定ファイルの編集
-alias m="emacs ~/.zshrc"
-alias x="source ~/.zshrc"
+alias m="emacs $HOME/.zshrc"
+alias x="source $HOME/.zshrc"
 
 # emacs関連
 alias e="emacs"
@@ -181,29 +177,29 @@ alias e="emacs"
 alias v="vim"
 
 # git関連
-alias push="git push"
-alias pull="git pull"
+#alias push="git push"
+#alias pull="git pull"
 alias gst="git status"
 alias gl="git log --graph --color --pretty=format:\"%C(cyan)[ %ad]%Creset %C(green)%h%Creset %C(white reverse)%an%Creset : %C(white bold)%s%Creset %C(blue)%D%Creset\" --decorate-refs=tags"
 #alias gl="git log --oneline --graph --color"
-alias gls="git log --graph --color"
+#alias gls="git log --graph --color"
 alias gb="git branch -v"
 alias gbd="git branch -D"
 alias gd="git diff --color"
 alias gdc="git diff --color --cached"
-alias grb="git rebace -i"
-alias ga="git add"
-alias gap="git add -p"
+#alias grb="git rebase -i"
+#alias ga="git add"
+#alias gap="git add -p"
 
-alias grs="git reset --soft"
-alias gth="git reset --hard"
+#alias grs="git reset --soft"
+#alias gth="git reset --hard"
 
-alias gsl="git stash list"
-alias gss="git stash save"
-alias gsp="git stash pop"
+#alias gsl="git stash list"
+#alias gss="git stash save"
+#alias gsp="git stash pop"
 #alias gds="git diff HEAD..stash@{}" aliasではなくて関数でやるべきかも
 
-alias gclf="git clean -f"
+#alias gclf="git clean -f"
 
 alias gck="git switch"
 alias gsw="git switch"
@@ -215,23 +211,9 @@ alias la="ls -al --color"
 # grep関連
 alias grep="grep -n --color=auto "
 
-# diff関連
-if [[ -x $(which colordiff) ]]; then
-    alias diff="colordiff -u"
-else
-    echo "[.zshrc]: colordiff not installed. insted use diff."
-    alias diff="diff -u"
-fi
-
-# java関連
-# 文字化け対策
-alias javac="javac -J-Dfile.encoding=UTF-8"
-
-# composer関連
-alias composer="php /usr/local/bin/composer"
-
-# 自前ツールのパス
-export PATH="$HOME/dotfiles/tools:$PATH"
+alias diff="diff -u"
+# colordiff関連
+(( $+commands[colordiff] )) && alias diff="colordiff -u"
 
 # ローカルでの設定
-[ -f ~/.zshlocal ] && source ~/.zshlocal
+[ -f $HOME/.zshlocal ] && source $HOME/.zshlocal

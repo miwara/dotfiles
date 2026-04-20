@@ -13,9 +13,6 @@ bin/
 gen/
 .eslintcache
 .envrc
-mise.toml
-.claude
-.gemini
 
 # playwright-cli
 .playwright
