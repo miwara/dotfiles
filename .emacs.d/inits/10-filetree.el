@@ -1,4 +1,4 @@
-;; --- 10-treemacs.el (File Tree: neotree) ---
+;; --- 10-filetree.el (File Tree: neotree) ---
 
 ;; アイコン表示（要: nerd-fonts インストール済み）
 (use-package nerd-icons
