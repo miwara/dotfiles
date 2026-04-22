@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive', { 'on': 'Git' }
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
+  Plug 'preservim/nerdtree'
 call plug#end()
 
 " 3. conf-loader 機能の実装 (仕様: docs/conf-loader.md)
