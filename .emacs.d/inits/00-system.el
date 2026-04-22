@@ -3,6 +3,9 @@
 ;; 簡略化
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; マウス操作を有効化（ターミナル）
+(xterm-mouse-mode 1)
+
 ;; 分割windwにしたときのカーソル移動設定(Meta-←，↓，↑，→)
 (global-set-key (kbd "<M-left>") 'windmove-left)
 (global-set-key (kbd "<M-right>") 'windmove-right)
