@@ -20,13 +20,15 @@ fullscreen = non-native-visible-menu
 #macos-non-native-fullscreen = true
 #maximize = true
 #macos-titlebar-style = tabs
+# スリープ復帰時にタイトルバーが表示されるのを防ぐ
+macos-titlebar-style = hidden
 
 # macos only
 # altの特殊文字入力を無効
 macos-option-as-alt = true
 
 background = #2f3b33
-background-opacity = 0.85
+background-opacity = 0.80
 # 裏画面を見ながらコマンドを打ちたいのでblurはしない
 # background-blur = false
 
@@ -55,3 +57,6 @@ keybind = shift+enter=text:\n
 # ctrl+shift+downで文字サイズを小さく
 keybind = ctrl+shift+up=increase_font_size:0.5
 keybind = ctrl+shift+down=decrease_font_size:0.5
+
+# ctrl+shift+bで透過のオン/オフを切り替え
+keybind = ctrl+shift+b=toggle_background_opacity
