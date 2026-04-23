@@ -13,8 +13,8 @@ alacritty.toml:$HOME/.config/alacritty/:.config/alacritty/alacritty.toml
 tmux.conf:$HOME/.config/tmux/:.config/tmux/tmux.conf
 config:$HOME/.config/ghostty/:.config/ghostty/config
 starship.toml:$HOME/.config/:.config/starship/starship.toml
-CLAUDE.md:$HOME/.claude/:.claude/CLAUDE.md
-settings.json:$HOME/.claude/:.claude/settings.json
+CLAUDE.md:$HOME/.claude/:.claude/CLAUDE.md.tmpl
+settings.json:$HOME/.claude/:.claude/settings.json.tmpl
 settings.json:$HOME/.config/ccstatusline/:.config/ccstatusline/settings.json
 "
 

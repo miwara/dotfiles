@@ -12,4 +12,6 @@
 .vim/plugged/
 .vim/.netrwhist/
 
-.claude/settings.local.json
+.claude/**
+!.claude/CLAUDE.md.tmpl
+!.claude/settings.json.tmpl
