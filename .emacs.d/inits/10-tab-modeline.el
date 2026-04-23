@@ -12,6 +12,7 @@
   :demand t
   :config
   (centaur-tabs-mode t)
+  (setq centaur-tabs-buffer-groups-function (lambda () (list "All")))
   (dolist (buf '("*Messages*" "*scratch*" "*Completions*"
                  "*Warnings*" "*Backtrace*"
                  "*Async-native-comp-log*" "*Native-compile-Log*"))
