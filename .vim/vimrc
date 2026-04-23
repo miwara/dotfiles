@@ -23,6 +23,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'dense-analysis/ale'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'puremourning/vimspector'
+  Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " 3. conf-loader 機能の実装 (仕様: docs/conf-loader.md)
