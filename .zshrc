@@ -23,6 +23,9 @@ case ${OSTYPE} in
 	;;
 esac
 
+# Go tools
+(( $+commands[go] )) && path=("$(go env GOPATH)/bin" $path)
+
 export PATH
 
 # starship

@@ -1,8 +1,16 @@
-# ghosttyのシェル統合機能の個別機能を無効
-# !不都合があったらここを変える!
-shell-integration-features = false
+# ghosttyのシェル統合機能を有効
+shell-integration = detect
+shell-integration-features = no-cursor,ssh-env,ssh-terminfo
 
-term = xterm-256color
+term = xterm-ghostty
+#term = xterm-256color
+
+# 新しいウィンドウ/タブ/分割は直前のシェルのディレクトリで開く
+window-inherit-working-directory = true
+# fullscreen設定なのでタブは使えない
+# tab-inherit-working-directory = true
+# tmuxを使っているので必要ない
+# split-inherit-working-directory = true
 
 # フルスクリーン関連
 #
@@ -45,6 +53,9 @@ cursor-style = block
 # 11pt に設定(2px/pt)
 font-size = 10
 
+# リガチャを無効
+font-feature = -calt
+
 # 1 GiB = 1073741824 B
 # 500 MiB = 524312500 B
 scrollback-limit = 1073741824
@@ -52,6 +63,9 @@ scrollbar = never
 
 # shift+enterで改行を入れられるようにする
 keybind = shift+enter=text:\n
+
+# non-native fullscreenではmacOSタブが作れないのでウィンドウを開く
+keybind = super+t=new_window
 
 # ctrl+shift+upで文字サイズを大きく
 # ctrl+shift+downで文字サイズを小さく
