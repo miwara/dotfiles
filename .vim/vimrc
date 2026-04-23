@@ -20,6 +20,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
   Plug 'preservim/nerdtree'
+  Plug 'dense-analysis/ale'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " 3. conf-loader 機能の実装 (仕様: docs/conf-loader.md)

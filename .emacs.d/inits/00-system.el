@@ -3,6 +3,9 @@
 ;; 簡略化
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(setq read-file-name-completion-ignore-case t)
+(setq completion-ignore-case t)
+
 ;; マウス操作を有効化（ターミナル）
 (xterm-mouse-mode 1)
 

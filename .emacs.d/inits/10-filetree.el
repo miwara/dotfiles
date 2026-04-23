@@ -15,6 +15,8 @@
   (setq neo-window-width 25)
   (setq neo-show-hidden-files t)
   (setq neo-smart-open t)       ; 開いているファイルの git root を自動で表示
+  :hook
+  (focus-in . neotree-refresh)
   :bind
   ("C-c e" . neotree-toggle))
 

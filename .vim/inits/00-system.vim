@@ -14,6 +14,8 @@ augroup checktime
 augroup END
 
 set mouse=a
+set wildignorecase
+set selection=exclusive
 set re=0
 set tags=./tags,tags
 
