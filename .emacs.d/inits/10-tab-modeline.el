@@ -15,7 +15,8 @@
   (setq centaur-tabs-buffer-groups-function (lambda () (list "All")))
   (dolist (buf '("*Messages*" "*scratch*" "*Completions*"
                  "*Warnings*" "*Backtrace*"
-                 "*Async-native-comp-log*" "*Native-compile-Log*"))
+                 "*Async-native-comp-log*" "*Native-compile-Log*"
+                 "*helm" " *helm"))
     (add-to-list 'centaur-tabs-excluded-prefixes buf))
   :custom
   ;; airline のように上部に表示
