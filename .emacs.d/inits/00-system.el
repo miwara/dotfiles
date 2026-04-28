@@ -9,6 +9,26 @@
 ;; マウス操作を有効化（ターミナル）
 (xterm-mouse-mode 1)
 
+;; macOSのクリップボードとの連携（pbcopy/pbpasteを使用）
+(when (and (eq system-type 'darwin) (not (display-graphic-p)))
+  (defun copy-from-osx ()
+    (shell-command-to-string "pbpaste"))
+  (defun paste-to-osx (text &optional push)
+    (let ((process-connection-type nil))
+      (let ((proc (start-process "pbcopy" nil "pbcopy")))
+        (process-send-string proc text)
+        (process-send-eof proc))))
+  (setq interprogram-cut-function 'paste-to-osx)
+  (setq interprogram-paste-function 'copy-from-osx))
+
+;; リージョンを選択した際に自動でクリップボードにコピー
+(setq select-enable-clipboard t)
+
+;; ターミナルでのブラケットペーストモードを有効化（インデント崩れ防止）
+(unless (display-graphic-p)
+  (when (fboundp 'xterm-paste-mode)
+    (xterm-paste-mode 1)))
+
 ;; 分割windwにしたときのカーソル移動設定(Meta-←，↓，↑，→)
 (global-set-key (kbd "<M-left>") 'windmove-left)
 (global-set-key (kbd "<M-right>") 'windmove-right)
@@ -36,6 +56,14 @@
 
 ;; ファイル内カーソル位置を記憶
 (setq-default save-place-mode t)
+
+;; アイコン表示（要: nerd-fonts インストール済み）
+(use-package nerd-icons
+  :ensure t
+  :config
+  ;; Nerd Font が未インストールの場合は自動インストール
+  (unless (cl-some (lambda (f) (string-match-p "Nerd Font" f)) (font-family-list))
+    (nerd-icons-install-fonts t)))
 
 (use-package uniquify
   :ensure nil
