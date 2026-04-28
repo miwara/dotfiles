@@ -3,9 +3,6 @@
 ;; https://github.com/ema2159/centaur-tabs
 ;; https://github.com/seagle0128/doom-modeline
 
-(use-package nerd-icons
-  :ensure t)
-
 ;; centaur-tabs
 (use-package centaur-tabs
   :ensure t
@@ -35,6 +32,10 @@
   ;; ここでは C-c <left> / <right> に設定
   ("C-c <left>" . centaur-tabs-backward)
   ("C-c <right>" . centaur-tabs-forward))
+
+(with-eval-after-load 'centaur-tabs
+  (advice-add 'centaur-tabs-forward  :after (lambda (&rest _) (when (fboundp 'treemacs-refresh) (treemacs-refresh))))
+  (advice-add 'centaur-tabs-backward :after (lambda (&rest _) (when (fboundp 'treemacs-refresh) (treemacs-refresh)))))
 
 ;; doom-modeline
 (use-package doom-modeline
