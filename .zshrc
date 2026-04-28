@@ -67,6 +67,9 @@ setopt extended_glob	# 拡張グロブ
 setopt nonomatch		# ^で「zsh: no matches found:」エラーの対策（\でエスケープできるけど一応指定しておく）
 setopt prompt_subst     # プロンプト展開を有効にする
 
+ulimit -n 10240         # ファイルディスクリプタの上限を引き上げる
+
+
 bindkey -e
 
 # プロンプト設定
