@@ -81,6 +81,10 @@
   (setq completion-category-overrides
         '((file (styles basic partial-completion)))))
 
+(after! corfu
+  (setq corfu-auto-delay 0.1
+        corfu-auto-prefix 2))
+
 (after! centaur-tabs
   (setq centaur-tabs-buffer-groups-function (lambda () (list "All"))
         centaur-tabs-set-bar 'above

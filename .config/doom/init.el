@@ -22,7 +22,7 @@
 
        :completion
        ;;company           ; the ultimate code completion backend
-       (corfu +orderless)  ; complete with cap(f), cape and a flying feather!
+       (corfu +orderless +dabbrev)  ; complete with cap(f), cape and a flying feather!
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
@@ -112,7 +112,7 @@
 
        :os
        (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
-       ;;tty               ; improve the terminal Emacs experience
+       tty               ; improve the terminal Emacs experience
 
        :lang
        ;;ada               ; In strong typing we (blindly) trust
