@@ -6,6 +6,8 @@
   ((typescript-mode       . eglot-ensure)
    (typescript-ts-mode    . eglot-ensure)
    (js-mode               . eglot-ensure)
+   (js-ts-mode            . eglot-ensure)
+   (tsx-ts-mode           . eglot-ensure)
    (python-mode           . eglot-ensure)
    (python-ts-mode        . eglot-ensure)
    (rust-mode             . eglot-ensure)
