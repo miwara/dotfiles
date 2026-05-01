@@ -44,3 +44,4 @@ vnoremap ' "zdi'<C-R>z'<ESC>
 
 nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <CR> :put! =''<CR>j

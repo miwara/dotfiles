@@ -85,6 +85,11 @@
   (setq corfu-auto-delay 0.1
         corfu-auto-prefix 2))
 
+(map! :n "RET" (cmd! (beginning-of-line)
+                     (open-line 1)
+                     (forward-line 1)
+                     (back-to-indentation)))
+
 (after! centaur-tabs
   (setq centaur-tabs-buffer-groups-function (lambda () (list "All"))
         centaur-tabs-set-bar 'above
