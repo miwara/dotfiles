@@ -33,9 +33,15 @@
   ("C-c <left>" . centaur-tabs-backward)
   ("C-c <right>" . centaur-tabs-forward))
 
+(defun +centaur-tabs/refresh-treemacs-a (&rest _)
+  (when (fboundp 'treemacs-refresh)
+    (treemacs-refresh)))
+
 (with-eval-after-load 'centaur-tabs
-  (advice-add 'centaur-tabs-forward  :after (lambda (&rest _) (when (fboundp 'treemacs-refresh) (treemacs-refresh))))
-  (advice-add 'centaur-tabs-backward :after (lambda (&rest _) (when (fboundp 'treemacs-refresh) (treemacs-refresh)))))
+  (unless (advice-member-p #'+centaur-tabs/refresh-treemacs-a #'centaur-tabs-forward)
+    (advice-add #'centaur-tabs-forward :after #'+centaur-tabs/refresh-treemacs-a))
+  (unless (advice-member-p #'+centaur-tabs/refresh-treemacs-a #'centaur-tabs-backward)
+    (advice-add #'centaur-tabs-backward :after #'+centaur-tabs/refresh-treemacs-a)))
 
 ;; doom-modeline
 (use-package doom-modeline

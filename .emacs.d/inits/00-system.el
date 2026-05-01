@@ -72,12 +72,11 @@
 
 ;; C-h をBackspaceにする
 (global-set-key "\C-h" 'delete-backward-char)
+(setq help-char nil
+      help-event-list '(f1))
 
 ;; ファイル末尾に改行を加える
 (setq require-final-newline t)
-
-;; バッファの自動再読み込み
-(global-auto-revert-mode t)
 
 ;; ビープ音の代わりに画面フラッシュ
 (setq visible-bell t)
@@ -105,8 +104,14 @@
 	(set-face-background 'default "black")
       (set-face-background 'default "FF"))
     (setq is-frame-opacity (not is-frame-opacity)))
-)
+  )
 
 ;; バックスラッシュを打つ
 ;;(define-key global-map [?\M-¥] [?\\])
 (define-key global-map [?¥] [?\\])
+
+;; 変更の自動反映
+(setq auto-revert-verbose nil
+      global-auto-revert-non-file-buffers t)
+;; バッファの自動再読み込み
+(global-auto-revert-mode 1)

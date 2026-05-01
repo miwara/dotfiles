@@ -39,8 +39,14 @@
   (add-hook 'persp-switch-hook #'+treemacs/ensure-visible-h)
   (add-hook 'persp-created-hook #'+treemacs/ensure-visible-h))
 
-;; 起動時に自動でファイルツリーを開き，メインウィンドウにフォーカスを戻す
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (treemacs)
-            (other-window 1)))
+;; 起動時と daemon の client frame 作成時にファイルツリーを開く
+(defun +treemacs/open-on-startup-h (&rest _)
+  (run-at-time
+   0.1 nil
+   (lambda ()
+     (when (require 'treemacs nil t)
+       (unless (treemacs-get-local-window)
+         (save-selected-window (treemacs)))))))
+
+(add-hook 'emacs-startup-hook #'+treemacs/open-on-startup-h)
+(add-hook 'server-after-make-frame-hook #'+treemacs/open-on-startup-h)

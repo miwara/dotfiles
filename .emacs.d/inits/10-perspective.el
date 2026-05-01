@@ -20,6 +20,8 @@
                    (lambda (b)
                      (and (buffer-live-p b)
                           (memq b persp-bufs)
+                          (not (with-current-buffer b
+                                 (derived-mode-p 'dired-mode)))
                           ;; centaur-tabs-excluded-prefixesに含まれるバッファを除外する
                           (not (cl-some (lambda (prefix)
                                           (string-prefix-p prefix (buffer-name b)))

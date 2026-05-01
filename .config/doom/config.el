@@ -81,14 +81,62 @@
   (setq completion-category-overrides
         '((file (styles basic partial-completion)))))
 
-(after! corfu
-  (setq corfu-auto-delay 0.1
-        corfu-auto-prefix 2))
+;; 変更の自動反映
+(setq auto-revert-verbose nil
+      global-auto-revert-non-file-buffers t)
+;; バッファの自動再読み込み
+(global-auto-revert-mode 1)
 
+(setq help-char nil
+      help-event-list '(f1))
+
+;;
+;; all mode keybind
+;;
+(map! :nvi "C-c m ." #'evil-mc-make-and-goto-next-match
+      :nvi "C-c m ," #'evil-mc-make-and-goto-prev-match
+      :nvi "M-<down>" #'evil-mc-make-cursor-move-next-line
+      :nvi "M-<up>" #'evil-mc-make-cursor-move-prev-line
+      )
+
+;;
+;; normal mode keybind
+;;
 (map! :n "RET" (cmd! (beginning-of-line)
                      (open-line 1)
                      (forward-line 1)
-                     (back-to-indentation)))
+                     (back-to-indentation))
+      )
+
+;;
+;; insert mode keybind
+;;
+(map! :i "C-b" #'backward-char
+      :i "C-f" #'forward-char
+      :i "C-p" #'previous-line
+      :i "C-n" #'next-line
+      :i "C-a" #'move-beginning-of-line
+      :i "C-e" #'move-end-of-line
+      :i "C-k" #'kill-line
+      :i "C-h" #'delete-backward-char
+      :i "C-d" #'delete-char
+      )
+
+(after! corfu
+  (setq corfu-auto-delay 0.1
+        corfu-auto-prefix 2)
+  (map! :map corfu-map
+        "M-n" #'corfu-next
+        "M-p" #'corfu-previous)
+  (map! :map corfu-mode-map
+        :i "C-n" #'next-line
+        :i "C-p" #'previous-line
+        :i "M-n" #'+corfu/dabbrev-or-next
+        :i "M-p" #'+corfu/dabbrev-or-last))
+
+(after! evil-markdown
+  (map! :map evil-markdown-mode-map
+        :i "C-d" #'delete-char))
 
 (after! centaur-tabs
   (setq centaur-tabs-buffer-groups-function (lambda () (list "All"))
@@ -97,6 +145,11 @@
         centaur-tabs-height 32
         centaur-tabs-set-icons t
         centaur-tabs-cycle-scope 'tabs)
+
+  (defun +dired/buffer-p (buffer)
+    "Return non-nil when BUFFER is a Dired buffer."
+    (with-current-buffer buffer
+      (derived-mode-p 'dired-mode)))
 
   ;; ワークスペース（Perspective）に属するバッファのみを表示
   (setq centaur-tabs-buffer-list-function
@@ -109,6 +162,7 @@
                  (lambda (b)
                    (and (buffer-live-p b)
                         (memq b bufs)
+                        (not (+dired/buffer-p b))
                         (not (cl-some (lambda (prefix)
                                         (string-prefix-p prefix (buffer-name b)))
                                       centaur-tabs-excluded-prefixes))))
@@ -116,6 +170,19 @@
             (error (buffer-list)))))
 
   (add-hook '+workspace-switch-hook #'centaur-tabs-buffer-update-groups))
+
+(defun +magit/commit-message-clean-windows-h ()
+  "Git commit message を開いたとき，前回の window 構成を捨てる．"
+  (when (and buffer-file-name
+             (string-match-p "COMMIT_EDITMSG\\'" buffer-file-name))
+    (delete-other-windows)))
+
+(defun +magit/rebase-todo-clean-windows-h ()
+  "git rebase todo 編集時に，前回の diff window を捨てる．"
+  (delete-other-windows))
+
+(add-hook 'git-commit-setup-hook #'+magit/commit-message-clean-windows-h)
+(add-hook 'git-rebase-mode-hook #'+magit/rebase-todo-clean-windows-h)
 
 ;; -----------------------------------------------------------------------------
 ;; Terminal & Clipboard Support (macOS)
@@ -169,11 +236,20 @@
   (add-hook '+workspace-created-hook #'+treemacs/ensure-visible-h)
   
   ;; SPC TAB n 等のコマンド実行後にも確実に介入する
-  (advice-add #'+workspace/new :after #'+treemacs/ensure-visible-h)
-  (advice-add #'+workspace/switch-to :after #'+treemacs/ensure-visible-h))
+  (unless (advice-member-p #'+treemacs/ensure-visible-h #'+workspace/new)
+    (advice-add #'+workspace/new :after #'+treemacs/ensure-visible-h))
+  (unless (advice-member-p #'+treemacs/ensure-visible-h #'+workspace/switch-to)
+    (advice-add #'+workspace/switch-to :after #'+treemacs/ensure-visible-h)))
 
-;; 起動時は確実に表示し，フォーカスをエディタに戻す
-(add-hook 'doom-after-init-hook
-          (lambda ()
-            (treemacs)
-            (other-window 1)))
+;; 起動時と daemon の client frame 作成時に Treemacs を表示し，フォーカスを戻す
+(defun +treemacs/open-on-startup-h (&rest _)
+  (run-at-time
+   0.1 nil
+   (lambda ()
+     (when (require 'treemacs nil t)
+       (unless (treemacs-get-local-window)
+         (save-selected-window (treemacs)))))))
+
+(add-hook 'doom-after-init-hook #'+treemacs/open-on-startup-h)
+(add-hook 'server-after-make-frame-hook #'+treemacs/open-on-startup-h)
+

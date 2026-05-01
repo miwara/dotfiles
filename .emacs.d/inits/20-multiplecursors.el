@@ -11,7 +11,9 @@
 	 ("M-[ 1 ; 6 n" . mc/mark-next-like-this)     ;; "C->" にしたかったがこれでないと動かなかった
 	 ("M-[ 1 ; 6 l" . mc/mark-previous-like-this) ;; "C-<" にしたかったがこれでないと動かなかった
 	 ;; mac用のkey-bind
-	 ("M-." . mc/mark-next-like-this)
-	 ("M-," . mc/mark-previous-like-this)
+	 ("C-c m ." . mc/mark-next-like-this)
+	 ("C-c m ," . mc/mark-previous-like-this)
+	 ("M-<down>" . mc/mark-next-lines)
+	 ("M-<up>" . mc/mark-previous-lines)
   )
 )
