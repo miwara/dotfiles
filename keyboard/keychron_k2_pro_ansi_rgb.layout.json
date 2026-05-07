@@ -120,9 +120,9 @@
     ],
     [
       "KC_TRNS",
-      "BR_DEC",
-      "BR_INC",
-      "KC_F3",
+      "KC_BRID",
+      "KC_BRIU",
+      "CUSTOM(4)",
       "KC_F4",
       "KC_F5",
       "KC_F6",
