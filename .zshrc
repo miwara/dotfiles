@@ -171,6 +171,24 @@ function do_enter() {
 zle -N do_enter
 bindkey '^m' do_enter
 
+# ghq と fzf の組み合わせ
+function cghq() {
+  (( $+commands[ghq] )) || {
+    echo "cghq: ghq not found" >&2
+    return 127
+  }
+
+  (( $+commands[fzf] )) || {
+    echo "cghq: fzf not found" >&2
+    return 127
+  }
+
+  local dir
+  dir=$(ghq list -p | fzf) || return
+  cd "$dir"
+}
+
+
 # alias
 # 設定ファイルの編集
 alias m="emacs $HOME/.zshrc"
