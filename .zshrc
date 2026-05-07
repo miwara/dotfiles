@@ -1,3 +1,8 @@
+# ローカルでの設定
+if [[ -r "$HOME/.zshlocal" ]]; then
+    source "$HOME/.zshlocal" || print -u2 "warning: failed to source ~/.zshlocal"
+fi
+
 # 文字コードの設定
 export LANG=en_US.UTF-8
 
@@ -12,14 +17,17 @@ path=(
 
 case ${OSTYPE} in
     darwin*)
-
-    path=(
-        "$(brew --prefix coreutils)/libexec/gnubin" # coreutils
-        "$(brew --prefix findutils)/libexec/gnubin" # findutils
-        "$(brew --prefix llvm)/bin" # llvm
-        "$(brew --prefix lld)/bin" # lld
-        $path
-    )
+        if [[ -x /opt/homebrew/bin/brew ]]; then
+            path=(
+                "$(/opt/homebrew/bin/brew --prefix coreutils)/libexec/gnubin" # coreutils
+                "$(/opt/homebrew/bin/brew --prefix findutils)/libexec/gnubin" # findutils
+                "$(/opt/homebrew/bin/brew --prefix llvm)/bin" # llvm
+                "$(/opt/homebrew/bin/brew --prefix lld)/bin" # lld
+                /opt/homebrew/bin
+                /opt/homebrew/sbin
+                $path
+            )
+        fi
 	;;
 esac
 
@@ -238,6 +246,3 @@ alias grep="grep -n --color=auto "
 alias diff="diff -u"
 # colordiff関連
 (( $+commands[colordiff] )) && alias diff="colordiff -u"
-
-# ローカルでの設定
-[ -f $HOME/.zshlocal ] && source $HOME/.zshlocal
