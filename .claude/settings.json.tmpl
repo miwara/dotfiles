@@ -4,6 +4,9 @@
     "ENABLE_TOOL_SEARCH": "true"
   },
   "permissions": {
+    "allow": [
+      "Bash(git status:*)"
+    ],
     "deny": [
       "Bash(sudo:*)",
       "Bash(rm -rf /)",
@@ -13,9 +16,6 @@
       "Bash(git push:*)",
       "Bash(git reset:*)",
       "Bash(git rebase:*)"
-    ],
-    "allow": [
-      "Bash(git status:*)"
     ],
     "defaultMode": "default"
   },
