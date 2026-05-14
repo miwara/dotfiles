@@ -102,11 +102,15 @@
 ;;
 ;; normal mode keybind
 ;;
-(map! :n "RET" (cmd! (beginning-of-line)
-                     (open-line 1)
-                     (forward-line 1)
-                     (back-to-indentation))
-      )
+(map! :n "RET" #'+editor/open-line-below-like-ret)
+
+(defun +editor/open-line-below-like-ret ()
+  "現在行の下に空行を作る．"
+  (interactive)
+  (beginning-of-line)
+  (open-line 1)
+  (forward-line 1)
+  (back-to-indentation))
 
 ;;
 ;; insert mode keybind
@@ -136,6 +140,7 @@
 
 (after! evil-markdown
   (map! :map evil-markdown-mode-map
+        :n "RET" #'+editor/open-line-below-like-ret
         :i "C-d" #'delete-char))
 
 (after! centaur-tabs
