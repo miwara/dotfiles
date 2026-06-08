@@ -28,8 +28,8 @@ if [ $# -ne 1 ]; then
     usage_exit
 fi
 
-FILENAME=$1
+TARGET=$1
 
-find $DIR \
-     -path ".git" -prune -o \
-     -type f -name "$FILENAME"
+find "$DIR" \
+     -name ".git" -prune -o \
+     -type f -iname "*${TARGET}*" -print
