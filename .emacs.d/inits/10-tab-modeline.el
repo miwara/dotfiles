@@ -52,3 +52,14 @@
   (doom-modeline-icon t)
   (doom-modeline-major-mode-icon t)
   (doom-modeline-buffer-file-name-style 'truncate-upto-project))
+
+;; よく使う関数名が長いので別名を設定
+(with-eval-after-load 'centaur-tabs
+  (alias-command-unless-defined
+   'move-tab-left
+   #'centaur-tabs-move-current-tab-to-left)
+
+  (alias-command-unless-defined
+   'move-tab-right
+   #'centaur-tabs-move-current-tab-to-right)
+  )

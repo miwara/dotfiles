@@ -50,3 +50,10 @@
 
 (add-hook 'emacs-startup-hook #'+treemacs/open-on-startup-h)
 (add-hook 'server-after-make-frame-hook #'+treemacs/open-on-startup-h)
+
+;; よく使う関数名が長いので別名を設定
+(with-eval-after-load 'treemacs
+  (alias-command-unless-defined
+   'focus-filetree
+   #'treemacs-select-window)
+  )

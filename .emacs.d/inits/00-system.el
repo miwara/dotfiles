@@ -115,3 +115,9 @@
       global-auto-revert-non-file-buffers t)
 ;; バッファの自動再読み込み
 (global-auto-revert-mode 1)
+
+;; 画面分割のカーソル移動
+(global-set-key (kbd "C-c h") #'window-left)
+(global-set-key (kbd "C-c j") #'window-down)
+(global-set-key (kbd "C-c k") #'window-up)
+(global-set-key (kbd "C-c l") #'window-right)

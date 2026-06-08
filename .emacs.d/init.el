@@ -21,6 +21,12 @@
 (when (file-exists-p custom-file)
   (load custom-file nil t))
 
+;; 関数名の別名を安全に定義するための関数
+(defun alias-command-unless-defined (name target)
+  (if (fboundp name)
+      (message "Alias skipped: %s already exists" name)
+    (defalias name target)))
+
 ;; -----------------------------------------------------------------------------
 ;; conf-loader: 自律的・堅牢な設定ロード機能
 ;; 仕様: docs/conf-loader.md

@@ -91,18 +91,32 @@
       help-event-list '(f1))
 
 ;;
-;; all mode keybind
+;; mode keybind
 ;;
-(map! :nvi "C-c m ." #'evil-mc-make-and-goto-next-match
+(map! :nvi "C-l" #'recenter-top-bottom
+      :nvi "C-c m ." #'evil-mc-make-and-goto-next-match
       :nvi "C-c m ," #'evil-mc-make-and-goto-prev-match
       :nvi "M-<down>" #'evil-mc-make-cursor-move-next-line
       :nvi "M-<up>" #'evil-mc-make-cursor-move-prev-line
       )
 
-;;
-;; normal mode keybind
-;;
-(map! :n "RET" #'+editor/open-line-below-like-ret)
+(map! :i "C-k" #'kill-line
+      :i "C-h" #'delete-backward-char
+      :i "C-d" #'delete-char
+      )
+
+;;(map! :vi "C-b" #'backward-char
+;;      :vi "C-f" #'forward-char
+;;      :vi "C-p" #'previous-line
+;;      :vi "C-n" #'next-line
+;;      :vi "C-a" #'move-beginning-of-line
+;;      :vi "C-e" #'move-end-of-line
+;;      :vi "M-f" #'forward-word
+;;      :vi "M-b" #'backward-word
+;;      )
+
+
+;;(map! :n "RET" #'+editor/open-line-below-like-ret)
 
 (defun +editor/open-line-below-like-ret ()
   "現在行の下に空行を作る．"
@@ -113,18 +127,15 @@
   (back-to-indentation))
 
 ;;
-;; insert mode keybind
+;; mojor mode keybind
 ;;
-(map! :i "C-b" #'backward-char
-      :i "C-f" #'forward-char
-      :i "C-p" #'previous-line
-      :i "C-n" #'next-line
-      :i "C-a" #'move-beginning-of-line
-      :i "C-e" #'move-end-of-line
-      :i "C-k" #'kill-line
-      :i "C-h" #'delete-backward-char
-      :i "C-d" #'delete-char
-      )
+(after! evil
+  (setq windmove-wrap-around t)
+  (map! :map evil-window-map
+        "h" #'windmove-left
+        "j" #'windmove-down
+        "k" #'windmove-up
+        "l" #'windmove-right))
 
 (after! corfu
   (setq corfu-auto-delay 0.1
@@ -140,8 +151,12 @@
 
 (after! evil-markdown
   (map! :map evil-markdown-mode-map
-        :n "RET" #'+editor/open-line-below-like-ret
+        ;; :n "RET" #'+editor/open-line-below-like-ret
+        :n "RET" nil
         :i "C-d" #'delete-char))
+(after! markdown-mode
+  (map! :map markdown-mode-map
+        :n "RET" nil))
 
 (after! centaur-tabs
   (setq centaur-tabs-buffer-groups-function (lambda () (list "All"))
@@ -188,6 +203,32 @@
 
 (add-hook 'git-commit-setup-hook #'+magit/commit-message-clean-windows-h)
 (add-hook 'git-rebase-mode-hook #'+magit/rebase-todo-clean-windows-h)
+
+;; 現在位置が属する関数・定義名をモードラインに表示する
+(require 'which-func)
+(which-function-mode t)
+
+;;
+;; major mode function alias
+;;
+
+(defun alias-command-unless-defined (name target)
+  (if (fboundp name)
+      (message "Alias skipped: %s already exists" name)
+    (defalias name target)))
+
+(after! centaur-tabs
+  (alias-command-unless-defined
+   'move-tab-left
+   #'centaur-tabs-move-current-tab-to-left)
+  (alias-command-unless-defined
+   'move-tab-right
+   #'centaur-tabs-move-current-tab-to-right))
+
+(after! treemacs
+  (alias-command-unless-defined
+   'focus-filetree
+   #'treemacs-select-window))
 
 ;; -----------------------------------------------------------------------------
 ;; Terminal & Clipboard Support (macOS)

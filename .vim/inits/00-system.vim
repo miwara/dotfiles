@@ -29,20 +29,41 @@ set selection=exclusive
 set re=0
 set tags=./tags,tags
 
+" --- Universal cursor movement ---
+" Normal mode
+nnoremap <C-l> zz
+
+" Insert mode
+"inoremap <C-b> <Left>
+"inoremap <C-f> <Right>
+"inoremap <C-p> <Up>
+"inoremap <C-n> <Down>
+"inoremap <C-a> <Home>
+"inoremap <C-e> <End>
+"inoremap <M-f> <C-Right>
+"inoremap <M-b> <C-Left>
+inoremap <C-h> <BS>
+inoremap <C-d> <Del>
+ionremap <C-k> <C-o>D
+inoremac <C-l> <C-o>zz
+
+" Visual mode
+"vnoremap <C-b> h
+"vnoremap <C-f> l
+"vnoremap <C-p> k
+"vnoremap <C-n> j
+"vnoremap <C-a> 0
+"vnoremap <C-e> $
+"vnoremap <M-f> w
+"vnoremap <M-b> b
+vnoremap <C-l> zz
+
 " --- Key Bindings ---
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-h> <BS>
-inoremap <C-d> <Del>
 
 vnoremap { "zdi^V{<C-R>z}<ESC>
 vnoremap [ "zdi^V[<C-R>z]<ESC>
@@ -50,6 +71,4 @@ vnoremap ( "zdi^V(<C-R>z)<ESC>
 vnoremap " "zdi^V"<C-R>z^V"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
-nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
-nnoremap <CR> :put! =''<CR>j
+"nnoremap <CR> :put! =''<CR>j
