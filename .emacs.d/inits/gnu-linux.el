@@ -17,7 +17,3 @@
 
 ; THE QUICK BROWN FOX JUMPS OVER LAZY DOG.
 ; the quick brown fox jumps over lazy dog. 0123456789
-
-;; モードラインの背景，文字の色設定
-(set-face-background 'mode-line "#ff5f00")
-(set-face-foreground 'mode-line "#000000")

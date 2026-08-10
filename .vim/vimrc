@@ -1,0 +1,95 @@
+" --- ~/.vim/vimrc: conf-loader Logic ---
+
+" 1. vim-plug 自体の自動インストール
+let s:plug_path = expand('~/.vim/autoload/plug.vim')
+if empty(glob(s:plug_path))
+  silent execute '!curl -fLo ' . s:plug_path . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+" 未インストールのプラグインがあれば自動インストール
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+" 2. プラグインの定義
+call plug#begin('~/.vim/plugged')
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'nordtheme/vim'
+  Plug 'tpope/vim-fugitive', { 'on': 'Git' }
+  Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
+  Plug 'preservim/nerdtree'
+  Plug 'dense-analysis/ale'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'puremourning/vimspector'
+  Plug 'editorconfig/editorconfig-vim'
+call plug#end()
+
+" 3. conf-loader 機能の実装 (仕様: docs/conf-loader.md)
+if !exists('g:conf_loader_dry_run')
+  let g:conf_loader_dry_run = 0
+endif
+
+function! s:conf_loader_run(dir)
+  let l:root_dir = expand('~/.vim')
+  let l:inits_dir = l:root_dir . '/' . a:dir
+  if !isdirectory(l:inits_dir)
+    echomsg "[Error] Directory not found: " . l:inits_dir
+    return
+  endif
+
+  " globpath で *.vim ファイルを検索
+  let l:files = sort(split(globpath(l:inits_dir, '*.vim'), '\n'))
+  
+  if empty(l:files)
+    echomsg "[Warning] No .vim files found in " . l:inits_dir
+  endif
+
+  let l:os_name = has('macunix') ? 'darwin' : (has('unix') ? 'linux' : 'windows')
+  let l:os_file = fnamemodify(l:inits_dir . '/' . l:os_name . '.vim', ':p')
+  let l:known_os_names = ['darwin', 'linux', 'windows']
+
+  if g:conf_loader_dry_run
+    echomsg "--- Starting conf-loader: " . l:inits_dir . " ---"
+  endif
+
+  for l:fpath in l:files
+    let l:fname = fnamemodify(l:fpath, ':t')
+    " 除外ルール: _ で始まる，または OS 名と一致する，または隠しファイル，または他 OS のファイル
+    let l:fname_no_ext = fnamemodify(l:fname, ':r')
+    if l:fname =~ '^[._]' || l:fpath == l:os_file
+      \ || (index(l:known_os_names, l:fname_no_ext) >= 0 && l:fname_no_ext !=# l:os_name)
+      continue
+    endif
+    call s:conf_loader_load_file(l:fpath)
+  endfor
+
+  " 最後に OS 固有の設定ファイルをロード
+  if filereadable(l:os_file)
+    if g:conf_loader_dry_run
+      echomsg "Loading OS-specific config: " . l:os_name . ".vim"
+    endif
+    call s:conf_loader_load_file(l:os_file)
+  endif
+
+  if g:conf_loader_dry_run
+    echomsg "--- Finished conf-loader: " . l:inits_dir . " ---"
+  endif
+endfunction
+
+function! s:conf_loader_load_file(file)
+  let l:fname = fnamemodify(a:file, ':t')
+  if g:conf_loader_dry_run
+    echomsg "[Dry-run] Would source: " . l:fname
+  else
+    try
+      execute 'source ' . fnameescape(a:file)
+    catch
+      echomsg "[Error] Failed to source " . l:fname . ": " . v:exception
+    endtry
+  endif
+endfunction
+
+" 設定ディレクトリのロード実行
+call s:conf_loader_run('inits')

@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage_exit() {
+    cat >&2 <<USAGE
+Usage: $0 [-d dir] [query]
+
+Interactively find a file with fzf and print the selected path.
+
+Options:
+  -d dir   Search directory. Default: .
+  -h       Show this help.
+USAGE
+    exit 1
+}
+
+DIR="."
+
+while getopts d:h OPT
+do
+    case "$OPT" in
+        d) DIR="$OPTARG" ;;
+        h) usage_exit ;;
+        \?) usage_exit ;;
+    esac
+done
+
+shift $((OPTIND - 1))
+
+if [ $# -gt 1 ]; then
+    usage_exit
+fi
+
+QUERY="${1:-}"
+
+if ! command -v fzf >/dev/null 2>&1; then
+    echo "ff: fzf is required" >&2
+    exit 127
+fi
+
+if [ ! -d "$DIR" ]; then
+    echo "ff: directory not found: $DIR" >&2
+    exit 1
+fi
+
+if command -v fd >/dev/null 2>&1; then
+    FIND_CMD=(fd --type f --hidden --follow --exclude .git . "$DIR")
+else
+    FIND_CMD=(find "$DIR" -name .git -prune -o -type f -print)
+fi
+
+PREVIEW=''
+if command -v bat >/dev/null 2>&1; then
+    PREVIEW='bat --style=numbers --color=always --line-range=:200 {}'
+elif command -v sed >/dev/null 2>&1; then
+    PREVIEW='sed -n "1,200p" {}'
+fi
+
+if [ -n "$PREVIEW" ]; then
+    "${FIND_CMD[@]}" | fzf --query "$QUERY" --preview "$PREVIEW" --preview-window 'right:60%:wrap'
+else
+    "${FIND_CMD[@]}" | fzf --query "$QUERY"
+fi

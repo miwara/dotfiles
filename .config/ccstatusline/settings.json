@@ -1,0 +1,86 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "color": "white",
+        "backgroundColor": "bgBrightBlack",
+        "rawValue": true
+      },
+      {
+        "id": "109ad5ae-cae7-45a5-88d5-8d4031139463",
+        "type": "current-working-dir",
+        "color": "brightBlack",
+        "backgroundColor": "bgWhite",
+        "rawValue": true,
+        "metadata": {
+          "fishStyle": "true"
+        }
+      },
+      {
+        "id": "1834fbae-f409-4eaa-9a65-e24703902960",
+        "type": "git-branch",
+        "color": "brightBlack",
+        "backgroundColor": "bgBrightWhite",
+        "merge": true,
+        "rawValue": false
+      },
+      {
+        "id": "b9c47ced-9cf0-4425-ae23-220e27f39216",
+        "type": "git-changes",
+        "color": "brightBlack",
+        "backgroundColor": "bgBrightWhite",
+        "rawValue": false
+      }
+    ],
+    [
+      {
+        "id": "073be40f-6538-47cb-a57e-ddba03832829",
+        "type": "context-percentage",
+        "color": "white",
+        "backgroundColor": "bgBrightBlack",
+        "metadata": {
+          "inverse": "false"
+        }
+      },
+      {
+        "id": "a283ae38-0e01-401f-abdf-2b0522824a4c",
+        "type": "session-clock",
+        "color": "brightBlack",
+        "backgroundColor": "bgWhite",
+        "metadata": {
+          "fishStyle": "true"
+        }
+      },
+      {
+        "id": "1d9ce55c-e93f-42ae-be19-8305655783eb",
+        "type": "block-timer",
+        "color": "brightBlack",
+        "backgroundColor": "bgBrightWhite"
+      }
+    ]
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "defaultPadding": " ",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "powerline": {
+    "enabled": true,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [
+      ""
+    ],
+    "theme": "custom",
+    "autoAlign": true
+  }
+}

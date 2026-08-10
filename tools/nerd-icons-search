@@ -1,0 +1,94 @@
+#!/bin/zsh
+# nerd-icons-search: Nerd Font アイコンをインタラクティブに検索してクリップボードにコピーする
+
+set -euo pipefail
+
+# --- 依存コマンドの確認 ---
+check_command() {
+  if ! command -v "$1" &>/dev/null; then
+    echo "Error: '$1' が見つかりません．インストールしてください．" >&2
+    exit 1
+  fi
+}
+
+check_command fzf
+check_command jq
+check_command curl
+check_command pbcopy
+check_command pbpaste
+
+# --- Nerd Font のインストール確認 ---
+# zsh glob (N) 修飾子: マッチなしでもエラーにならず空配列を返す
+_has_nerd_font() {
+  local files
+  files=("$HOME"/Library/Fonts/*Nerd*(N) /Library/Fonts/*Nerd*(N))
+  [[ ${#files[@]} -gt 0 ]]
+}
+
+if ! _has_nerd_font; then
+  echo "Warning: Nerd Font が見つかりません．アイコンが正しく表示されない可能性があります．" >&2
+fi
+
+# --- アイコンデータのキャッシュ ---
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/nerd-icons"
+CACHE_FILE="$CACHE_DIR/glyphnames.json"
+GLYPHS_URL="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/glyphnames.json"
+
+mkdir -p "$CACHE_DIR"
+
+if [[ ! -f "$CACHE_FILE" ]]; then
+  echo "Downloading Nerd Fonts icon data..." >&2
+  curl -fsSL "$GLYPHS_URL" -o "$CACHE_FILE" || {
+    echo "Error: アイコンデータのダウンロードに失敗しました．" >&2
+    exit 1
+  }
+fi
+
+# --- アイコンリストを一時ファイルに展開 ---
+icon_list=$(mktemp)
+filter_script=$(mktemp)
+trap "rm -f $icon_list $filter_script" EXIT
+
+jq -r 'to_entries[]
+  | select(.key != "METADATA")
+  | "\(.value.char)  \(.key)  U+\(.value.code | ascii_upcase)"' "$CACHE_FILE" > "$icon_list"
+
+# --- フィルタスクリプト ---
+# クエリの種類:
+#   "phrase" / 'phrase' → フレーズ完全一致（大文字小文字無視）
+#   その他              → 正規表現マッチ（ERE, 大文字小文字無視）
+cat > "$filter_script" << 'FILTER'
+#!/bin/zsh
+q="$1"
+f="$2"
+if [[ -z "$q" ]]; then
+  cat "$f"
+elif [[ "$q" =~ ^[\"\'](.*)[\"\']$ ]]; then
+  grep -iF -- "${match[1]}" "$f" 2>/dev/null || true
+else
+  grep -iE -- "$q" "$f" 2>/dev/null || true
+fi
+FILTER
+chmod +x "$filter_script"
+
+# --- fzf で検索 ---
+# 表示形式: <glyph>  <name>  U+<codepoint>
+selected=$(
+  cat "$icon_list" \
+  | fzf --no-sort \
+        --layout=reverse \
+        --disabled \
+        --prompt="Nerd Icons > " \
+        --bind "ctrl-k:kill-line" \
+        --bind "ctrl-y:transform-query(echo -n {q}; pbpaste | tr -d '\n')" \
+        --bind "change:reload($filter_script {q} $icon_list)" \
+        --preview 'printf "\n\n        {1}\n\n\nName:  {2}\nCode:  {3}\n"' \
+        --preview-window 'right:30:wrap'
+) || exit 0
+
+[[ -z "$selected" ]] && exit 0
+
+# --- 選択したグリフをクリップボードにコピー ---
+glyph=$(echo "$selected" | awk '{print $1}')
+printf '%s' "$glyph" | pbcopy
+echo "Copied: $glyph"

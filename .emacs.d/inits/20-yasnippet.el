@@ -2,6 +2,7 @@
 ;; https://github.com/capitaomorte/yasnippet
 
 (use-package yasnippet
+  :ensure t
   :init
   (yas-global-mode t)
 

@@ -1,49 +1,48 @@
-#!/bin/bash
+#!/bin/sh
 
-set -eu
+DOTFILES=$(cd "$(dirname "$0")" && pwd)
 
-currentdir=$(cd $(dirname $0); pwd)
-dotemacsdir="$HOME/.emacs.d"
+# name:placeDir:src (srcが空の場合はnameと同じ)
+CONF_FILES="
+.emacs.d:$HOME/:
+.zshrc:$HOME/:
+ignore:$HOME/.config/git/:.config/git/ignore
+.vimrc:$HOME/:
+.vim:$HOME/:
+alacritty.toml:$HOME/.config/alacritty/:.config/alacritty/alacritty.toml
+tmux.conf:$HOME/.config/tmux/:.config/tmux/tmux.conf
+config:$HOME/.config/ghostty/:.config/ghostty/config
+starship.toml:$HOME/.config/:.config/starship/starship.toml
+CLAUDE.md:$HOME/.claude/:.claude/CLAUDE.md.tmpl
+settings.json:$HOME/.claude/:.claude/settings.json.tmpl
+settings.json:$HOME/.config/ccstatusline/:.config/ccstatusline/settings.json
+"
 
-dotemacsfiles="init.el custom.el snippets"
-dotfiles=".zshrc .tmux.conf .gitignore .vimrc"
+make_symlink() {
+  name="$1"
+  place_dir="$2"
+  src="$3"
 
-if [ ! -e $dotemacsdir ]; then
-    mkdir $dotemacsdir
-fi
+  [ -z "$src" ] && src="$name"
 
-# 同名ファイルは2つ作れないので
-# ディレクトリを作ってその中で作業する
-# （いらないかも）
-if [ ! -e ./tmp ]; then
-    mkdir ./tmp
-fi
-cd ./tmp
+  target="${place_dir}${name}"
+  link_src="${DOTFILES}/${src}"
 
-for file in $dotemacsfiles
-do
-    if [ ! -e $dotemacsdir/$file ]; then
-        echo "--- make $file link ---"
-        ln -s $currentdir/$file $file
-        mv $file $dotemacsdir/$file
-        echo "OK."
-        echo "-----------------------"
-        echo ""
-    fi
+  mkdir -p "$place_dir"
+
+  if [ -L "$target" ]; then
+    rm "$target"
+  elif [ -e "$target" ]; then
+    echo "Skipped (not a symlink): $target"
+    return
+  fi
+
+  ln -s "$link_src" "$target" || echo "Failed to create symlink: $target -> $link_src"
+}
+
+echo "$CONF_FILES" | while IFS=: read -r name place_dir src; do
+  [ -z "$name" ] && continue
+  make_symlink "$name" "$place_dir" "$src"
 done
-
-for file in $dotfiles
-do
-    if [ ! -e $HOME/$file ]; then
-        echo "--- make $file ---"
-        ln -s $currentdir/$file $file
-        mv $file $HOME/$file
-        echo "OK."
-        echo "-----------------------"
-        echo ""
-    fi
-done
-
-git config --global core.excludesfile $HOME/.gitignore
 
 echo "\done!/"

@@ -1,13 +1,17 @@
-,
 *~
-*.o
 *.elc
-tags
-tags-e
 .DS_Store
-.node-version
-.npm-version
-.python-version
-bin/
-gen/
-.vscode
+.eslintcache
+.envrc
+
+# Editor plugins & auto-generated files
+.emacs.d/elpa/
+.emacs.d/.cache/
+.emacs.d/.local/
+.vim/autoload/plug.vim
+.vim/plugged/
+.vim/.netrwhist/
+
+.claude/**
+!.claude/CLAUDE.md.tmpl
+!.claude/settings.json.tmpl

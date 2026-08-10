@@ -1,0 +1,76 @@
+# ghosttyのシェル統合機能を有効
+shell-integration = detect
+shell-integration-features = no-cursor,ssh-env,ssh-terminfo
+
+term = xterm-ghostty
+#term = xterm-256color
+
+# 新しいウィンドウ/タブ/分割は直前のシェルのディレクトリで開く
+window-inherit-working-directory = true
+# fullscreen設定なのでタブは使えない
+# tab-inherit-working-directory = true
+# tmuxを使っているので必要ない
+# split-inherit-working-directory = true
+
+# フルスクリーン関連
+#
+# 全画面に引き伸ばした表示をしてほしいのに以下の場合だとwindowの大きさが変更される
+# - ghosttyを全画面表示をしている状態で，他のアプリを起動すると
+#   他のアプリのメニュー分ghosttyのwindowの高さが縮む
+# - pcスリープから起動すると稀に全画面が解除されている
+#
+# 一旦メニューを表示しておく
+# `window-padding-y`も一旦上方向のpaddingはしない
+#fullscreen = non-native
+fullscreen = non-native-visible-menu
+
+# fullscreenの設定が優先される
+#macos-non-native-fullscreen = true
+#maximize = true
+#macos-titlebar-style = tabs
+# スリープ復帰時にタイトルバーが表示されるのを防ぐ
+macos-titlebar-style = hidden
+
+# macos only
+# altの特殊文字入力を無効
+macos-option-as-alt = true
+
+background = #2f3b33
+background-opacity = 0.80
+# 裏画面を見ながらコマンドを打ちたいのでblurはしない
+# background-blur = false
+
+# x軸方向　カンマ区切りで「右,左」の設定できる
+window-padding-x = 10
+# y軸方向　カンマ区切りで「上,下」の設定できる
+# fullscreenが思ったように動かないので上方向のpaddingはしない
+#window-padding-y = 30,5
+window-padding-y = 5
+
+
+cursor-style = block
+
+# 11pt に設定(2px/pt)
+font-size = 10
+
+# リガチャを無効
+font-feature = -calt
+
+# 1 GiB = 1073741824 B
+# 500 MiB = 524312500 B
+scrollback-limit = 1073741824
+scrollbar = never
+
+# shift+enterで改行を入れられるようにする
+keybind = shift+enter=text:\n
+
+# non-native fullscreenではmacOSタブが作れないのでウィンドウを開く
+keybind = super+t=new_window
+
+# ctrl+shift+upで文字サイズを大きく
+# ctrl+shift+downで文字サイズを小さく
+keybind = ctrl+shift+up=increase_font_size:0.5
+keybind = ctrl+shift+down=decrease_font_size:0.5
+
+# ctrl+shift+bで透過のオン/オフを切り替え
+keybind = ctrl+shift+b=toggle_background_opacity

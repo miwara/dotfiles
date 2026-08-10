@@ -1,0 +1,17 @@
+,
+*~
+*.o
+*.elc
+tags
+tags-e
+.DS_Store
+/bin/
+gen/
+.eslintcache
+.envrc
+
+# playwright-cli
+.playwright
+.playwright-cli
+
+**/.claude/settings.local.json
